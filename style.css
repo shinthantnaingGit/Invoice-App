@@ -10,8 +10,10 @@
   /* Define a new utility class for ......*/
 
   --font-family-montserrat: "Montserrat", sans-serif;
-  --font-family-padauk: "Padauk", sans-serif;
+  --font-family-padauk: "Padauk", sans-serif
 
   /* Optional: If you want Ancizar Serif to be your default serif font */
   /* --font-family-serif: "Ancizar Serif", serif; */
+
+  
 }
