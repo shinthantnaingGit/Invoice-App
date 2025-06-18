@@ -4,8 +4,8 @@
 @import "flowbite/src/themes/default";
 @plugin "flowbite/plugin";
 @source "../node_modules/flowbite";
-@import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
+@import "tailwindcss";
 @theme {
   /* Define a new utility class for ......*/
 
@@ -20,4 +20,15 @@
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
+}
+
+.swal2-popup {
+  @apply bg-white dark:bg-gray-800 rounded-lg shadow-lg p-2 opacity-95 dark:opacity-95;
+}
+.swal2-title {
+  @apply font-family-montserrat text-3xl font-bold text-gray-800 dark:text-gray-200;
+}
+
+.swal2-confirm {
+  @apply bg-blue-600 text-white font-family-montserrat font-bold;
 }
