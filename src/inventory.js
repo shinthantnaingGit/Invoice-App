@@ -13,13 +13,14 @@ import { products } from "./state";
 //ADD NEW PRODUCT BTN
 export const newProductBtnHandler = () => {
   // console.log("new product btn clicked!");
-  const createId = uuidv4;
+  const createId = uuidv4();
   //console.log(createId,newProductName.value,newProductPrice.valueAsNumber);
   products.push({
     id: createId,
     name: newProductName.value,
-    price: newProductPrice.valueAsNumber,
+    price: newProductPrice.valueAsNumber
   });
+  console.log(products);
   if (newProductName.value.trim() && !isNaN(newProductPrice.valueAsNumber)) {
     productGroup.append(
       createNewProductList(
@@ -40,17 +41,11 @@ export const newProductBtnHandler = () => {
     Swal.fire("No Product Name or Price");
   }
 };
-export const productRender = (products) => {
-  products.forEach(({ id, name, price }) => {
-    productGroup.append(createNewProductList(id, name, price));
-    productSelect.append(new Option(`${name} - ${price}`, id));
-  });
-};
 //CREATE NEW PRODUCT LIST
 // This function creates a new product list item based on the template
 export const createNewProductList = (id, name, price) => {
   const productListTP = productListTemplate.content.cloneNode(true);
-  console.log(productListTP);
+  // console.log(productListTP);
   const currentProductList = productListTP.querySelector(".product-list");
   currentProductList.id = id;
   // console.log(productList.id);
@@ -61,6 +56,13 @@ export const createNewProductList = (id, name, price) => {
   // console.log( productName.innerText = name);
   // console.log( productPrice.innerText = price);
   return currentProductList;
+};
+//RENDER PRODUCTS
+export const productRender = (products) => {
+  products.forEach(({ id, name, price }) => {
+    productGroup.append(createNewProductList(id, name, price));
+    productSelect.append(new Option(`${name} - ${price}`, id));
+  });
 };
 // JUMP TO NEW PRODUCT PRICE INPUT
 export const jumpToNewProductPriceHandler = (event) => {
