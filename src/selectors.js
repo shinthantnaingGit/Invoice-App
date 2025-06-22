@@ -17,4 +17,6 @@ export const recordRowTemplate = document.querySelector("#recordRowTemplate");
 export const recordTotal = document.querySelector("#recordTotal");
 export const recordTax = document.querySelector("#recordTax");
 export const recordNetTotal = document.querySelector("#recordNetTotal");
-export const recordGroup = document.querySelector("#recordGroup")
+export const recordGroup = document.querySelector("#recordGroup");
+export const checkOutBtn = document.querySelector("#checkOutBtn");
+

@@ -1,18 +1,7 @@
-import { calculateRecordCostTotal, calculateRecordTax } from "./record";
-import { recordGroup, recordNetTotal, recordTax, recordTotal } from "./selectors";
+import { recordGroupObserver } from "./record";
 
-export const observeFunction = () => {
-  console.log("Record Group Observed");
-  const total = calculateRecordCostTotal();
-  const tax = calculateRecordTax(total);
-  const netTotal = total + tax;
-  recordTotal.innerText = total;
-  recordTax.innerText = tax;
-  recordNetTotal.innerText = netTotal;
-};
+const observer = () => {
+ recordGroupObserver();
+}
 
-const productRowGroupObserver = new MutationObserver(observeFunction);
-
-const config = { attributes: true, childList: true, subtree: true };
-
-productRowGroupObserver.observe(recordGroup, config);
+export default observer;

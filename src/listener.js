@@ -1,4 +1,5 @@
 import {
+  checkOutBtnHandler,
   closeSideBarBtnHandler,
   manageInventoryBtnHandler,
   outsideClickHandler,
@@ -12,6 +13,7 @@ import {
 } from "./inventory";
 import { createRecordFormHandler, recordGroupHandler } from "./record";
 import {
+  checkOutBtn,
   createRecordForm,
   manageInventorySideBar,
   newProductBtn,
@@ -32,6 +34,8 @@ const listener = () => {
   manageInventorySideBar.addEventListener("click", sideBarClickHandler);
   document.addEventListener("click", outsideClickHandler);
   recordGroup.addEventListener("click", recordGroupHandler);
+  checkOutBtn.addEventListener("click", checkOutBtnHandler);
+
 };
 
 export default listener;

@@ -20,7 +20,7 @@ export const newProductBtnHandler = () => {
     name: newProductName.value,
     price: newProductPrice.valueAsNumber
   });
-  console.log(products);
+  // console.log(products);
   if (newProductName.value.trim() && !isNaN(newProductPrice.valueAsNumber)) {
     productGroup.append(
       createNewProductList(

@@ -1,13 +1,13 @@
 import { initialRender } from "./initialRender";
 import listener from "./listener";
-import { observeFunction } from "./observer";
+import observer from "./observer";
 
 class Invoice {
-  init(){
-  console.log("Invoice App Started");
-  observeFunction();
-  initialRender();
-  listener();
+  init() {
+    console.log("Invoice App Started");
+    observer();
+    initialRender();
+    listener();
   }
 }
 export default Invoice;
