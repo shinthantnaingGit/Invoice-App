@@ -9,7 +9,6 @@ import {
   jumpToNewProductPriceHandler,
   newProductBtnHandler,
   newProductEnterKeyHandler,
-  productNameFocusHandler,
 } from "./inventory";
 import { createRecordFormHandler, recordGroupHandler } from "./record";
 import {
@@ -29,13 +28,11 @@ const listener = () => {
   newProductBtn.addEventListener("click", newProductBtnHandler);
   newProductName.addEventListener("keyup", jumpToNewProductPriceHandler);
   newProductPrice.addEventListener("keyup", newProductEnterKeyHandler);
-  manageInventorySideBar.addEventListener("click", productNameFocusHandler);
   createRecordForm.addEventListener("submit", createRecordFormHandler);
   manageInventorySideBar.addEventListener("click", sideBarClickHandler);
   document.addEventListener("click", outsideClickHandler);
   recordGroup.addEventListener("click", recordGroupHandler);
   checkOutBtn.addEventListener("click", checkOutBtnHandler);
-
 };
 
 export default listener;

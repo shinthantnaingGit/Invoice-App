@@ -80,7 +80,3 @@ export const newProductEnterKeyHandler = (event) => {
     newProductName.focus();
   }
 };
-// PRODUCT NAME FOCUS HANDLER
-export const productNameFocusHandler = (event) => {
-  newProductName.focus();
-};

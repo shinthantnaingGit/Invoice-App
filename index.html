@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="./public/money.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Invoice App</title>
@@ -13,7 +13,7 @@
         <div class="container mx-auto">
           <div class="py-4">
             <h1 class="font-family-montserrat text-3xl font-bold">
-              MMS Solutions
+              SHIN Solutions
             </h1>
             <p class="text-blue-400">Invoice App For Shop</p>
           </div>
@@ -82,11 +82,24 @@
                 class="text-xs text-gray-700 uppercase bg-blue-200 dark:bg-gray-700 dark:text-gray-400"
               >
                 <tr>
-                  <th scope="col" class="px-6 py-3">Product name</th>
-                  <th scope="col" class="px-6 py-3 text-end">Price</th>
-                  <th scope="col" class="px-6 py-3 text-end">Quantity</th>
-                  <th scope="col" class="px-6 py-3 text-end">Cost</th>
-                  <th scope="col" class="px-6 py-3 text-end table-cell print:hidden">Action</th>
+                  <th scope="col" class="text-nowrap px-8 py-3 w-[25%]">
+                    Product name
+                  </th>
+                  <th scope="col" class="px-8 py-3 text-end w-[18.75%]">
+                    Price
+                  </th>
+                  <th scope="col" class="px-8 py-3 text-end w-[18.75%]">
+                    Quantity
+                  </th>
+                  <th scope="col" class="px-8 py-3 text-end w-[18.75%]">
+                    Cost
+                  </th>
+                  <th
+                    scope="col"
+                    class="px-8 py-3 text-end w-[18.75%] table-cell print:hidden"
+                  >
+                    Action
+                  </th>
                 </tr>
               </thead>
               <tbody id="recordGroup">
@@ -107,27 +120,31 @@
                   <th
                     scope="row"
                     colspan="3"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-end"
+                    class="px-8 w-[18.75%] py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-end"
                   >
                     Total
                   </th>
-                  <td class="px-6 py-4 text-end">
+                  <td class="text-nowrap px-8 py-4 text-end w-[18.75%]">
                     <span id="recordTotal">0</span> ¥
                   </td>
-                  <td class="px-6 py-4 text-end table-cell print:hidden"></td>
+                  <td
+                    class="px-8 py-4 text-end w-[18.75%] table-cell print:hidden"
+                  ></td>
                 </tr>
                 <tr class="border-b dark:border-gray-700 border-gray-100">
                   <th
                     scope="row"
                     colspan="3"
-                    class="px-6 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white text-end"
+                    class="px-8 w-[18.75%] py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white text-end"
                   >
                     Tax (5%)
                   </th>
-                  <td class="px-6 py-3 text-end">
+                  <td class="text-nowrap px-8 py-3 text-end w-[18.75%]">
                     <span id="recordTax">0</span> ¥
                   </td>
-                  <td class="px-6 py-3 text-end table-cell print:hidden"></td>
+                  <td
+                    class="px-8 py-3 w-[18.75%] text-end table-cell print:hidden"
+                  ></td>
                 </tr>
                 <tr
                   class="border-b dark:border-gray-700 border-gray-100 last:border-none"
@@ -135,22 +152,24 @@
                   <th
                     scope="row"
                     colspan="3"
-                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-end"
+                    class="px-8 py-4 w-[18.75%] font-medium text-gray-900 whitespace-nowrap dark:text-white text-end"
                   >
                     Net Total
                   </th>
-                  <td class="px-6 py-3 text-end">
+                  <td class="text-nowrap px-8 py-3 w-[18.75%] text-end">
                     <span id="recordNetTotal">0</span> ¥
                   </td>
-                  <td class="px-6 py-3 text-end table-cell print:hidden"></td>
+                  <td
+                    class="px-8 w-[18.75%] py-3 text-end table-cell print:hidden"
+                  ></td>
                 </tr>
               </tfoot>
             </table>
           </div>
-            <p class="mt-5 hidden print:block mx-auto">ありがとうございました。</p>
-
+          <p class="mt-5 hidden print:block mx-auto">
+            ありがとうございました。
+          </p>
         </div>
-
       </section>
       <section
         id="manageInventorySideBar"
@@ -243,7 +262,7 @@
               Manage Inventory
             </button>
             <button
-            id="checkOutBtn"
+              id="checkOutBtn"
               type="button"
               class="mb-2 rounded-lg bg-blue-700 px-3 py-2 text-sm font-medium text-white hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900"
             >
@@ -261,55 +280,63 @@
         </div>
       </template>
       <template id="recordRowTemplate">
-        <tr class="record-row border-b group dark:border-gray-700 border-gray-400">
+        <tr
+          class="record-row border-b group dark:border-gray-700 border-gray-400"
+        >
           <th
             scope="row"
-            class="record-product-name px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            class="record-product-name px-8 w-[25%] py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
           ></th>
-          <td class="px-6 py-4 text-end">
+          <td class="px-8 w-[18.75%] py-4 text-end text-nowrap ">
             <span class="record-product-price"></span> ¥
           </td>
 
-          <td class="px-6 py-4 flex items-center justify-end gap-0.5">
-            <button class="active:scale-90 hidden group-hover:block quantity-sub">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-5 pointer-events-none"
+          <td class="px-8 w-[18.75%] py-4">
+            <div class="flex items-center justify-end gap-0.5">
+              <button
+                class="active:scale-90 hidden group-hover:block quantity-sub"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                />
-              </svg>
-            </button>
-            <span class="record-quantity inline-block"></span>
-            <button class="active:scale-90 hidden group-hover:block quantity-add">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-5 pointer-events-none"
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-5 pointer-events-none"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
+              </button>
+              <span class="record-quantity block"></span>
+              <button
+                class="active:scale-90 hidden group-hover:block quantity-add"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                />
-              </svg>
-            </button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-5 pointer-events-none"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg>
+              </button>
+            </div>
           </td>
 
-          <td class="px-6 py-4 text-end">
+          <td class="px-8 w-[18.75%] py-4 text-end">
             <span class="record-cost"></span> ¥
           </td>
-          <td class="px-6 py-4 text-end table-cell print:hidden">
+          <td class="px-8 w-[18.75%] py-4 text-end table-cell print:hidden">
             <button
               class="remove-record cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline"
             >
