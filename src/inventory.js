@@ -18,7 +18,7 @@ export const newProductBtnHandler = () => {
   products.push({
     id: createId,
     name: newProductName.value,
-    price: newProductPrice.valueAsNumber
+    price: newProductPrice.valueAsNumber,
   });
   // console.log(products);
   if (newProductName.value.trim() && !isNaN(newProductPrice.valueAsNumber)) {
@@ -42,7 +42,6 @@ export const newProductBtnHandler = () => {
   }
 };
 //CREATE NEW PRODUCT LIST
-// This function creates a new product list item based on the template
 export const createNewProductList = (id, name, price) => {
   const productListTP = productListTemplate.content.cloneNode(true);
   // console.log(productListTP);
@@ -57,6 +56,38 @@ export const createNewProductList = (id, name, price) => {
   // console.log( productPrice.innerText = price);
   return currentProductList;
 };
+//PRODUCT LIST GROUP HANDLER
+export const productGroupHandler = (event) => {
+  console.log("you clicked listGroup");
+  console.log(event.target);
+  const currentProductList = event.target.closest(".product-list");
+  if (event.target.classList.contains("product-remove")) {
+    deleteProductList(currentProductList.id);
+    console.log(currentProductList);
+    console.log(currentProductList.id);
+  }
+};
+//DELETE PRODUCT LIST
+export const deleteProductList = (listId) => {
+  console.log("You Deleted");
+
+  Swal.fire({
+    title: "Are you sure to Remove?",
+    text: "You won't be able to revert this!",
+    icon: "question",
+    showCancelButton: true,
+    confirmButtonText: "Yes, delete it!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        icon: "success",
+      });
+      productGroup.querySelector(`#${listId}`).remove();
+    }
+  });
+};
 //RENDER PRODUCTS
 export const productRender = (products) => {
   products.forEach(({ id, name, price }) => {
@@ -64,16 +95,16 @@ export const productRender = (products) => {
     productSelect.append(new Option(`${name} - ${price}`, id));
   });
 };
-// JUMP TO NEW PRODUCT PRICE INPUT
-export const jumpToNewProductPriceHandler = (event) => {
+// ENTER KEY PRODUCT NAME INPUT
+export const productNameInputEnterKeyHandler = (event) => {
   // console.dir(event);
   if (event.key === "Enter") {
     event.preventDefault(); // Prevent the default Enter key behavior (e.g., form submission)
     newProductPrice.focus(); // Focus on the second input
   }
 };
-// NEW PRODUCT ENTER KEY HANDLER
-export const newProductEnterKeyHandler = (event) => {
+// ENTER KEY FOR PRICE INPUT
+export const priceInputEnterKeyHandler = (event) => {
   if (event.key === "Enter") {
     event.preventDefault();
     newProductBtnHandler();

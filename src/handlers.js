@@ -19,7 +19,7 @@ export const sideBarClickHandler = (event) => {
   event.stopPropagation();
 };
 //CLICK OUTSIDE THE SIDE BAR AND CLOSE IT
-export const outsideClickHandler = (event) => {
+export const outSideClickHandler = (event) => {
   // console.log("You Clicked Outside");
   if (!manageInventorySideBar.classList.contains("translate-x-full")) {
     // console.log("Its contain");
