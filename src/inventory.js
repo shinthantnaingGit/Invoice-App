@@ -46,7 +46,7 @@ export const createNewProductList = (id, name, price) => {
   const productListTP = productListTemplate.content.cloneNode(true);
   // console.log(productListTP);
   const currentProductList = productListTP.querySelector(".product-list");
-  currentProductList.id = id;
+  currentProductList.id = "row" + id;
   // console.log(productList.id);
   const productName = productListTP.querySelector(".product-name");
   const productPrice = productListTP.querySelector(".product-price");
@@ -58,19 +58,18 @@ export const createNewProductList = (id, name, price) => {
 };
 //PRODUCT LIST GROUP HANDLER
 export const productGroupHandler = (event) => {
-  console.log("you clicked listGroup");
-  console.log(event.target);
+  // console.log("you clicked listGroup");
+  // console.log(event.target);
   const currentProductList = event.target.closest(".product-list");
   if (event.target.classList.contains("product-remove")) {
     deleteProductList(currentProductList.id);
-    console.log(currentProductList);
-    console.log(currentProductList.id);
+    // console.log(currentProductList);
+    // console.log(currentProductList.id);
   }
 };
 //DELETE PRODUCT LIST
 export const deleteProductList = (listId) => {
-  console.log("You Deleted");
-
+  // console.log("You Deleted");
   Swal.fire({
     title: "Are you sure to Remove?",
     text: "You won't be able to revert this!",
