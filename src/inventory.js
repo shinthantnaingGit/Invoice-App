@@ -46,7 +46,7 @@ export const createNewProductList = (id, name, price) => {
   const productListTP = productListTemplate.content.cloneNode(true);
   // console.log(productListTP);
   const currentProductList = productListTP.querySelector(".product-list");
-  currentProductList.id = "row" + id;
+  currentProductList.id = "list" + id;
   // console.log(productList.id);
   const productName = productListTP.querySelector(".product-name");
   const productPrice = productListTP.querySelector(".product-price");
@@ -83,7 +83,28 @@ export const deleteProductList = (listId) => {
         text: "Your file has been deleted.",
         icon: "success",
       });
-      productGroup.querySelector(`#${listId}`).remove();
+      const currentProductList = productGroup.querySelector(`#${listId}`);
+      currentProductList.classList.add(
+        "animate__animated",
+        "animate__zoomOutRight"
+      );
+      currentProductList.addEventListener("animationend", () => {
+        // Remove the product list from the DOM
+        // console.log("Animation ended, removing product list");
+        currentProductList.remove();
+        // Remove the product from the products array
+        const productIndex = products.findIndex(
+          (product) => product.id === listId.replace("list", "")
+        );
+        if (productIndex !== -1) {
+          products.splice(productIndex, 1);
+        }
+        // Also remove the option from the select dropdown
+        const currentSelectOption = productSelect.querySelector(
+          `option[value="${listId.replace("list", "")}"]`
+        );
+        currentSelectOption.remove();
+      });
     }
   });
 };
@@ -94,7 +115,7 @@ export const productRender = (products) => {
     productSelect.append(new Option(`${name} - ${price}`, id));
   });
 };
-// ENTER KEY PRODUCT NAME INPUT
+// ENTER KEY FOR PRODUCT NAME INPUT
 export const productNameInputEnterKeyHandler = (event) => {
   // console.dir(event);
   if (event.key === "Enter") {

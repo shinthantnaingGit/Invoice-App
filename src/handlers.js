@@ -1,7 +1,7 @@
-import { manageInventorySideBar, newProductName } from "./selectors";
+import { manageInventorySideBar, newProductName, openManageInventoryBtn } from "./selectors";
 
 //OPEN MANAGE INVENTORY
-export const manageInventoryBtnHandler = () => {
+export const openManageInventoryBtnHandler = () => {
   // console.log("You Clicked Managae Inventory Btn");
   // console.log(manageInventorySideBar.classList);
   manageInventorySideBar.classList.remove("translate-x-full");
@@ -10,13 +10,8 @@ export const manageInventoryBtnHandler = () => {
   // event.stopPropagation();
 };
 //CLOSE MANAGE INVENTORY
-export const closeSideBarBtnHandler = () => {
+export const closeManageInventoryBtnHandler = () => {
   manageInventorySideBar.classList.add("translate-x-full");
-};
-//SIDE BAR STOP PROPAGATION
-export const sideBarClickHandler = (event) => {
-  //To prevent closing sidebar by clicking inside the side bar;
-  event.stopPropagation();
 };
 //CLICK OUTSIDE THE SIDE BAR AND CLOSE IT
 export const outSideClickHandler = (event) => {
@@ -25,7 +20,7 @@ export const outSideClickHandler = (event) => {
     // 1. Check if the clicked element is part of the sidebar or the open button
     if (
       manageInventorySideBar.contains(event.target) ||
-      manageInventoryBtn.contains(event.target)
+      openManageInventoryBtn.contains(event.target)
     ) {
       // If YES, do nothing (keep sidebar open)
       return;
@@ -48,7 +43,7 @@ export const outSideClickHandler = (event) => {
     manageInventorySideBar.classList.add("translate-x-full");
   }
 };
-
+//CHECK OUT
 export const checkOutBtnHandler = () => {
   // console.log("check out");
   window.print();

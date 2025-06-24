@@ -1,9 +1,9 @@
 export const app = document.querySelector("#app");
-export const manageInventoryBtn = document.querySelector("#manageInventoryBtn");
 export const manageInventorySideBar = document.querySelector(
   "#manageInventorySideBar"
 );
-export const closeSideBarBtn = document.querySelector("#closeSideBarBtn");
+export const openManageInventoryBtn = document.querySelector("#openManageInventoryBtn");
+export const closeMangeInventoryBtn = document.querySelector("#closeMangeInventoryBtn");
 export const newProductName = document.querySelector("#newProductName");
 export const newProductPrice = document.querySelector("#newProductPrice");
 export const newProductBtn = document.querySelector("#newProductBtn");

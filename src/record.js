@@ -1,7 +1,6 @@
 import Swal from "sweetalert2";
 import {
   createRecordForm,
-  productGroup,
   recordGroup,
   recordNetTotal,
   recordRowTemplate,
@@ -10,7 +9,7 @@ import {
 } from "./selectors";
 import { products } from "./state";
 import { v4 as uuidv4 } from "uuid";
-
+//CREATE RECORD FORM HANDLER
 export const createRecordFormHandler = (event) => {
   event.preventDefault();
   const formData = new FormData(createRecordForm);
@@ -23,7 +22,7 @@ export const createRecordFormHandler = (event) => {
   const product = products.find(
     ({ id }) => id == formData.get("product_select")
   );
-  const existedRecord = document.querySelector(`[product-id='${product.id}']`);
+  const existedRecord = document.querySelector(`#row${product.id}`);
   // console.log(existedRecord);
   if (existedRecord == null) {
     recordGroup.append(createNewRecordRow(product, formData.get("quantity")));
@@ -65,27 +64,37 @@ export const createNewRecordRow = ({ id, name, price }, quantity) => {
   );
   const recordQuantity = currentRecordRow.querySelector(".record-quantity");
   const recordCost = currentRecordRow.querySelector(".record-cost");
-  currentRecordRow.setAttribute("product-id", id);
-  // currentRecordRow.id = "row" + id;
+  // currentRecordRow.setAttribute("product-id", id);
+  currentRecordRow.id = "row" + id;
   // console.log("row Id",currentRecordRow.id);
-  currentRecordRow.id = "row" + uuidv4();
+  // currentRecordRow.id = "row" + uuidv4();
   recordProductName.innerText = name;
   recordProductPrice.innerText = price;
   recordQuantity.innerText = quantity;
   recordCost.innerText = price * quantity;
   return currentRecordRow;
 };
-//CALCULATE RECORD COSTS TOTAL
-export const calculateRecordCostTotal = () => {
-  let total = 0;
-  const recordCosts = recordGroup.querySelectorAll(".record-cost");
-  // console.log(recordCosts);
-  recordCosts.forEach((el) => (total += parseFloat(el.innerText)));
-  return total;
+//RECORD GROUP HANDLER
+export const recordGroupHandler = (event) => {
+  // console.log(event.target);
+  const currentRecordRow = event.target.closest(".record-row");
+  // console.log(currentRecordRow);
+  if (event.target.classList.contains("remove-record")) {
+    // console.log("you clicked remove");
+    removeRecordRow(currentRecordRow.id);
+    // console.log(currentRecordRow.id);
+  }
+  if (event.target.classList.contains("quantity-add")) {
+    // console.log("you clicked +");
+    // console.log(currentRecordRow.id);
+    updateRecordQuantity(currentRecordRow.id, 1);
+  }
+  if (event.target.classList.contains("quantity-sub")) {
+    // console.log("you clicked -");
+    // quantitySub(currentRecordRow.id);
+    updateRecordQuantity(currentRecordRow.id, -1);
+  }
 };
-//CALCULATE RECORD TAX
-export const calculateRecordTax = (amount, percent = 5) =>
-  (amount / 100) * percent;
 //REMOVE RECORD ROW
 export const removeRecordRow = (rowId) => {
   Swal.fire({
@@ -96,7 +105,8 @@ export const removeRecordRow = (rowId) => {
     confirmButtonText: "Yes, delete it!",
   }).then((result) => {
     if (result.isConfirmed) {
-      recordGroup.querySelector(`#${rowId}`).remove();
+      const currentRecordRow = recordGroup.querySelector(`#${rowId}`);
+      currentRecordRow.remove();
 
       Swal.fire({
         title: "Deleted!",
@@ -106,7 +116,7 @@ export const removeRecordRow = (rowId) => {
     }
   });
 };
-
+//UPDATE RECORD QUANTITY
 const updateRecordQuantity = (RowId, newQuantity) => {
   const currentRecordRow = recordGroup.querySelector(`#${RowId}`);
   // console.log(currentRecordRow);
@@ -127,27 +137,18 @@ const updateRecordQuantity = (RowId, newQuantity) => {
   // }
 };
 
-export const recordGroupHandler = (event) => {
-  // console.log(event.target);
-  const currentRecordRow = event.target.closest(".record-row");
-  // console.log(currentRecordRow);
-  if (event.target.classList.contains("remove-record")) {
-    // console.log("you clicked remove");
-    removeRecordRow(currentRecordRow.id);
-    // console.log(currentRecordRow.id);
-  }
-  if (event.target.classList.contains("quantity-add")) {
-    console.log("you clicked +");
-    // console.log(currentRecordRow.id);
-    updateRecordQuantity(currentRecordRow.id, 1);
-  }
-  if (event.target.classList.contains("quantity-sub")) {
-    console.log("you clicked -");
-    // quantitySub(currentRecordRow.id);
-    updateRecordQuantity(currentRecordRow.id, -1);
-  }
+//CALCULATE RECORD COSTS TOTAL
+export const calculateRecordCostTotal = () => {
+  let total = 0;
+  const recordCosts = recordGroup.querySelectorAll(".record-cost");
+  // console.log(recordCosts);
+  recordCosts.forEach((el) => (total += parseFloat(el.innerText)));
+  return total;
 };
-
+//CALCULATE RECORD TAX
+export const calculateRecordTax = (amount, percent = 5) =>
+  (amount / 100) * percent;
+//RECORD GROUP OBSERVER
 export const recordGroupObserver = () => {
   //CALLBACK FUNCTION
   const observeFunction = () => {
@@ -181,6 +182,7 @@ export const recordGroupObserver = () => {
 //     parseFloat(recordProductPrice.innerText) *
 //     parseFloat(recordQuantity.innerText);
 // };
+
 // //SUBTRACT QUANTITY
 // export const quantitySub = (Rowid) => {
 //   const currentRecordRow = recordGroup.querySelector(`#${Rowid}`);
@@ -200,4 +202,3 @@ export const recordGroupObserver = () => {
 //     removeRecordRow(Rowid);
 //   }
 // };
-//UPDATE QUANTITY
