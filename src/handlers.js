@@ -48,3 +48,25 @@ export const checkOutBtnHandler = () => {
   // console.log("check out");
   window.print();
 };
+ //THEME TOGGLE LOGIC
+   const htmlElement = document.documentElement;
+   
+   if (themeToggleButton) {
+            themeToggleButton.addEventListener('click', () => {
+                // DEBUGGING: Log when the button is clicked
+                console.log("Theme toggle button clicked!");
+
+                if (htmlElement.getAttribute('data-theme') === 'dark') {
+                    htmlElement.setAttribute('data-theme', 'light');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    htmlElement.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+                // DEBUGGING: Log the state after toggle
+                console.log("Current theme (from data-theme):", htmlElement.getAttribute('data-theme'));
+                console.log("Current theme (from localStorage):", localStorage.getItem('theme'));
+            });
+        } else {
+            console.error("Error: Theme toggle button with ID 'themeToggleButton' not found!");
+        }

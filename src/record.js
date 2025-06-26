@@ -106,7 +106,13 @@ export const removeRecordRow = (rowId) => {
   }).then((result) => {
     if (result.isConfirmed) {
       const currentRecordRow = recordGroup.querySelector(`#${rowId}`);
-      currentRecordRow.remove();
+      currentRecordRow.classList.add(
+        "animate__animated",
+        "animate__fadeOut"
+      );
+      currentRecordRow.addEventListener("animationend", () => {
+        currentRecordRow.remove();
+      });
 
       Swal.fire({
         title: "Deleted!",
