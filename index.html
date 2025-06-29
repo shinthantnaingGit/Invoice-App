@@ -197,7 +197,7 @@
                   <th class="py-3 px-6">Price (¥)</th>
                   <th class="py-3 px-6">Qty</th>
                   <th class="py-3 px-6 text-right">Cost (¥)</th>
-                  <th class="py-3 px-6">Actions</th>
+                  <th class="py-3 px-6 print:hidden">Actions</th>
                 </tr>
               </thead>
               <tbody
@@ -319,7 +319,7 @@
       <!-- Manage Inventory Sidebar -->
       <aside
         id="manageInventorySideBar"
-        class="fixed top-0 right-0 h-full w-[400px] shadow-2xl transform translate-x-full transition-transform ease-in-out duration-300 p-6 z-50 rounded-l-xl border-l overflow-y-auto custom-scrollbar"
+        class="fixed top-0 right-0 h-full w-[350px] sm:w-[500px] shadow-2xl transform translate-x-full transition-transform ease-in-out duration-300 p-6 z-50 rounded-l-xl border-l overflow-y-auto custom-scrollbar"
         style="
           background-color: var(--color-sidebar-bg);
           border-color: var(--color-sidebar-border);
@@ -475,7 +475,7 @@
           <td class="py-3 px-6 text-left">
             <div class="flex items-center">
               <button
-                class="quantity-sub w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold focus:outline-none focus:ring-2 focus:ring-opacity-75"
+                class="quantity-sub w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold focus:outline-none focus:ring-2 focus:ring-opacity-75 print:hidden"
                 style="
                   background-color: var(--color-quantity-button-bg);
                   color: var(--color-quantity-button-text);
@@ -489,7 +489,7 @@
                 style="color: var(--color-product-name-text)"
               ></span>
               <button
-                class="quantity-add w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold focus:outline-none focus:ring-2 focus:ring-opacity-75"
+                class="quantity-add w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold focus:outline-none focus:ring-2 focus:ring-opacity-75 print:hidden"
                 style="
                   background-color: var(--color-quantity-button-bg);
                   color: var(--color-quantity-button-text);
@@ -508,7 +508,7 @@
           </td>
           <td class="py-3 px-6 text-center">
             <button
-              class="remove-record w-7 h-7 flex items-center justify-center rounded-full text-sm font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-75"
+              class="remove-record w-7 h-7 flex items-center justify-center rounded-full text-sm font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-75 print:hidden"
               style="
                 background-color: var(--color-remove-button-bg);
                 color: #ffffff;

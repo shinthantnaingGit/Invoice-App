@@ -131,22 +131,7 @@
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: var(--scrollbar-thumb-hover-bg);
         }
-
-        /* Icon visibility based on data-theme */
-        #sunIcon {
-            display: block; /* Default to visible in light mode */
-        }
-        html[data-theme='dark'] #sunIcon {
-            display: none; /* Hide in dark mode */
-        }
-
-        #moonIcon {
-            display: none; /* Default to hidden in light mode */
-        }
-        html[data-theme='dark'] #moonIcon {
-            display: block; /* Show in dark mode */
-        }
-
+       
         /* Custom styles for print, if needed */
         @media print {
             /* Hide the sidebar and other non-essential elements for printing */

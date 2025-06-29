@@ -20,4 +20,6 @@ export const recordNetTotal = document.querySelector("#recordNetTotal");
 export const recordGroup = document.querySelector("#recordGroup");
 export const checkOutBtn = document.querySelector("#checkOutBtn");
 export const themeToggleButton = document.querySelector("#themeToggleButton");
+export const sunIcon = document.querySelector("#sunIcon");
+export const moonIcon = document.querySelector("#moonIcon");
 
