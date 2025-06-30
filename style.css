@@ -68,6 +68,7 @@
             --color-manage-btn-bg: #ffffff;
             --color-manage-btn-text: #1e40af;
             --color-manage-btn-hover-bg: #e0f2fe;
+            --color-record-row-hover: #e5e7eb;
 
             /* Scrollbar for Light Theme */
             --scrollbar-track-bg: #e2e8f0;
@@ -108,6 +109,7 @@
             --color-manage-btn-bg: #2dd4bf; /* teal-400 */
             --color-manage-btn-text: #1f2937;
             --color-manage-btn-hover-bg: #20c2b2;
+            --color-record-row-hover: #111827; /* gray-900 */
 
             /* Scrollbar for Dark Theme */
             --scrollbar-track-bg: #2d3748;
