@@ -1,77 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./public/money.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Invoice App</title>
-  </head>
-  <body
-    class="font-family-inter antialiased"
-    style="
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./public/money.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Invoice App" />
+  <meta property="og:description"
+    content="A simple and intuitive web app to organize tasks, track progress, and boost productivity with a clean, modern design." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://invoice-app-theta-six.vercel.app/" />
+  <meta property="og:image" content="./public/money.png" />
+  <meta property="og:site_name" content="Invoice App" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://invoice-app-theta-six.vercel.app/" />
+  <meta property="twitter:title" content="Invoice App" />
+  <meta property="twitter:description" content="Test It!!!" />
+  <meta property="twitter:image" content="./public/money.png" />
+
+  <!-- Meta Tags Generated with https://metatags.io -->
+  <title>Invoice App</title>
+</head>
+
+<body class="font-family-inter antialiased" style="
       background-color: var(--color-bg-primary);
       color: var(--color-text-primary);
-    "
-  >
-    <div id="app" class="min-h-screen flex flex-col relative">
-      <!-- Header -->
-      <header
-        class="relative z-20 p-4 shadow-lg flex justify-between items-center rounded-b-xl"
-        style="
+    ">
+  <div id="app" class="min-h-screen flex flex-col relative">
+    <!-- Header -->
+    <header class="relative z-20 p-4 shadow-lg flex justify-between items-center rounded-b-xl" style="
           background: linear-gradient(
             to right,
             var(--color-header-bg-start),
             var(--color-header-bg-end)
           );
           color: var(--color-text-primary);
-        "
-      >
-        <h1 class="text-3xl font-extrabold tracking-wide">
-          Mirai IT Solutions
-        </h1>
-        <div class="flex items-center space-x-4">
-          <button
-            id="themeToggleButton"
-            class="p-2.5 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 transition-colors duration-200"
-          >
-            <!-- Sun Icon for Light Mode -->
-            <svg
-              id="sunIcon"
-              class="w-6 h-6 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 3v1m0 16v1m9-9h1M2 12h1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-              ></path>
-            </svg>
-            <!-- Moon Icon for Dark Mode - Initially hidden, shown when data-theme="dark" is applied by JS -->
-            <svg
-              id="moonIcon"
-              class="w-6 h-6 text-white hidden"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-              ></path>
-            </svg>
-          </button>
-          <button
-            id="openManageInventoryBtn"
-            class="px-6 py-2.5 rounded-full font-bold shadow-md transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-opacity-75"
-            style="
+        ">
+      <h1 class="text-3xl font-extrabold tracking-wide">
+        Mirai IT Solutions
+      </h1>
+      <div class="flex items-center space-x-4">
+        <button id="themeToggleButton"
+          class="p-2.5 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 transition-colors duration-200">
+          <!-- Sun Icon for Light Mode -->
+          <svg id="sunIcon" class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h1M2 12h1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+            </path>
+          </svg>
+          <!-- Moon Icon for Dark Mode - Initially hidden, shown when data-theme="dark" is applied by JS -->
+          <svg id="moonIcon" class="w-6 h-6 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+        <button id="openManageInventoryBtn"
+          class="px-6 py-2.5 rounded-full font-bold shadow-md transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-opacity-75"
+          style="
               background-color: var(--color-manage-btn-bg);
               color: var(--color-manage-btn-text);
               border-color: var(
@@ -80,449 +71,296 @@
               --tw-ring-color: var(
                 --color-manage-btn-bg
               ); /* Explicitly set ring color */
-            "
-          >
-            Manage Inventory
-          </button>
-        </div>
-      </header>
+            ">
+          Manage Inventory
+        </button>
+      </div>
+    </header>
 
-      <!-- Main Content Area -->
-      <main
-        class="flex-1 container mx-auto p-6 grid grid-cols-1 lg:grid-cols-3 gap-8"
-      >
-        <!-- Invoice Creation Section -->
-        <section class="lg:col-span-2 flex flex-col gap-8">
-          <!-- Create Record Form -->
-          <div
-            id="invoiceItemCreationg"
-            class="p-8 rounded-2xl shadow-lg border"
-            style="
+    <!-- Main Content Area -->
+    <main class="flex-1 container mx-auto p-6 grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Invoice Creation Section -->
+      <section class="lg:col-span-2 flex flex-col gap-8">
+        <!-- Create Record Form -->
+        <div id="invoiceItemCreationg" class="p-8 rounded-2xl shadow-lg border" style="
               background-color: var(--color-card-bg);
               border-color: var(--color-card-border);
-            "
-          >
-            <h2
-              class="text-2xl font-bold mb-6"
-              style="color: var(--color-text-primary)"
-            >
-              Add Item to Invoice
-            </h2>
-            <form id="createRecordForm" class="space-y-6">
-              <div>
-                <label
-                  for="productSelect"
-                  class="block text-sm font-medium mb-2"
-                  style="color: var(--color-label-text)"
-                  >Select Product</label
-                >
-                <select
-                  id="productSelect"
-                  name="product_select"
-                  class="w-full p-3 rounded-lg focus:ring-2 transition-all duration-200"
-                  style="
+            ">
+          <h2 class="text-2xl font-bold mb-6" style="color: var(--color-text-primary)">
+            Add Item to Invoice
+          </h2>
+          <form id="createRecordForm" class="space-y-6">
+            <div>
+              <label for="productSelect" class="block text-sm font-medium mb-2"
+                style="color: var(--color-label-text)">Select Product</label>
+              <select id="productSelect" name="product_select"
+                class="w-full p-3 rounded-lg focus:ring-2 transition-all duration-200" style="
                     background-color: var(--color-input-bg);
                     border: 1px solid var(--color-input-border);
                     color: var(--color-text-primary);
                     --tw-ring-color: var(--color-manage-btn-bg);
-                  "
-                >
-                  <option value="">-- Choose a Product --</option>
-                  <!-- Product options will be dynamically added here by JavaScript -->
-                </select>
-              </div>
-              <div>
-                <label
-                  for="quantity"
-                  class="block text-sm font-medium mb-2"
-                  style="color: var(--color-label-text)"
-                  >Quantity</label
-                >
-                <input
-                  type="number"
-                  id="quantity"
-                  name="quantity"
-                  min="1"
-                  value="1"
-                  class="w-full p-3 rounded-lg focus:ring-2 transition-all duration-200"
-                  style="
+                  ">
+                <option value="">-- Choose a Product --</option>
+                <!-- Product options will be dynamically added here by JavaScript -->
+              </select>
+            </div>
+            <div>
+              <label for="quantity" class="block text-sm font-medium mb-2"
+                style="color: var(--color-label-text)">Quantity</label>
+              <input type="number" id="quantity" name="quantity" min="1" value="1"
+                class="w-full p-3 rounded-lg focus:ring-2 transition-all duration-200" style="
                     background-color: var(--color-input-bg);
                     border: 1px solid var(--color-input-border);
                     color: var(--color-text-primary);
                     --tw-ring-color: var(--color-manage-btn-bg);
-                  "
-                />
-              </div>
-              <button
-                type="submit"
-                class="w-full p-3 rounded-lg font-semibold shadow-md transform hover:scale-105 transition-colors duration-200"
-                style="
+                  " />
+            </div>
+            <button type="submit"
+              class="w-full p-3 rounded-lg font-semibold shadow-md transform hover:scale-105 transition-colors duration-200"
+              style="
                   background-color: var(--color-header-bg-start);
                   color: #ffffff; /* Always white text for these buttons */
                   border-color: var(
                     --color-header-bg-start
                   ); /* Use for ring color if needed */
                   --tw-ring-color: var(--color-header-bg-start);
-                "
-              >
-                Add to Invoice
-              </button>
-            </form>
-          </div>
+                ">
+              Add to Invoice
+            </button>
+          </form>
+        </div>
 
-          <!-- Invoice Items Table -->
-          <div
-            class="p-8 rounded-2xl shadow-lg border overflow-x-auto"
-            style="
+        <!-- Invoice Items Table -->
+        <div class="p-8 rounded-2xl shadow-lg border overflow-x-auto" style="
               background-color: var(--color-card-bg);
               border-color: var(--color-card-border);
-            "
-          >
-            <h2
-              class="text-2xl font-bold mb-6"
-              style="color: var(--color-text-primary)"
-            >
-              Invoice Items
-            </h2>
-            <table class="min-w-full table-auto border-collapse">
-              <thead>
-                <tr
-                  class="text-left uppercase text-sm leading-normal"
-                  style="
+            ">
+          <h2 class="text-2xl font-bold mb-6" style="color: var(--color-text-primary)">
+            Invoice Items
+          </h2>
+          <table class="min-w-full table-auto border-collapse">
+            <thead>
+              <tr class="text-left uppercase text-sm leading-normal" style="
                     background-color: var(--color-table-header-bg);
                     color: var(--color-table-header-text);
-                  "
-                >
-                  <th class="py-3 px-6">Product</th>
-                  <th class="py-3 px-6">Price (¥)</th>
-                  <th class="py-3 px-6">Qty</th>
-                  <th class="py-3 px-6 text-right">Cost (¥)</th>
-                  <th class="py-3 px-6 print:hidden">Actions</th>
-                </tr>
-              </thead>
-              <tbody
-                id="recordGroup"
-                class="text-sm font-light"
-                style="color: var(--color-table-row-text)"
-              >
-                <!-- Invoice records will be dynamically added here by JavaScript -->
-              </tbody>
-            </table>
-          </div>
-        </section>
+                  ">
+                <th class="py-3 px-6">Product</th>
+                <th class="py-3 px-6">Price (¥)</th>
+                <th class="py-3 px-6">Qty</th>
+                <th class="py-3 px-6 text-right">Cost (¥)</th>
+                <th class="py-3 px-6 print:hidden">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="recordGroup" class="text-sm font-light" style="color: var(--color-table-row-text)">
+              <!-- Invoice records will be dynamically added here by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-        <!-- Summary and Actions Section -->
-        <aside class="lg:col-span-1 flex flex-col gap-8">
-          <!-- Summary Card -->
-          <div
-            class="p-8 rounded-2xl shadow-lg border"
-            style="
+      <!-- Summary and Actions Section -->
+      <aside class="lg:col-span-1 flex flex-col gap-8">
+        <!-- Summary Card -->
+        <div class="p-8 rounded-2xl shadow-lg border" style="
               background-color: var(--color-card-bg);
               border-color: var(--color-card-border);
-            "
-          >
-            <h2
-              class="text-2xl font-bold mb-6"
-              style="color: var(--color-text-primary)"
-            >
-              Invoice Summary
-            </h2>
-            <div class="space-y-4">
-              <div
-                class="flex justify-between items-center text-lg font-medium"
-                style="color: var(--color-label-text)"
-              >
-                <span>Total:</span>
-                <div>
-                  <span
-                    id="recordTotal"
-                    class="font-bold text-xl"
-                    style="color: var(--color-total-text)"
-                    >0</span
-                  ><span
-                    class="font-bold text-xl"
-                    style="color: var(--color-total-text)"
-                  >
-                    ¥</span
-                  >
-                </div>
+            ">
+          <h2 class="text-2xl font-bold mb-6" style="color: var(--color-text-primary)">
+            Invoice Summary
+          </h2>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center text-lg font-medium" style="color: var(--color-label-text)">
+              <span>Total:</span>
+              <div>
+                <span id="recordTotal" class="font-bold text-xl" style="color: var(--color-total-text)">0</span><span
+                  class="font-bold text-xl" style="color: var(--color-total-text)">
+                  ¥</span>
               </div>
-              <div
-                class="flex justify-between items-center text-lg font-medium"
-                style="color: var(--color-label-text)"
-              >
-                <span>Tax (5%):</span>
-                <div>
-                  <span
-                    id="recordTax"
-                    class="font-bold text-xl"
-                    style="color: var(--color-total-text)"
-                    >0</span
-                  ><span
-                    class="font-bold text-xl"
-                    style="color: var(--color-total-text)"
-                  >
-                    ¥</span
-                  >
-                </div>
+            </div>
+            <div class="flex justify-between items-center text-lg font-medium" style="color: var(--color-label-text)">
+              <span>Tax (5%):</span>
+              <div>
+                <span id="recordTax" class="font-bold text-xl" style="color: var(--color-total-text)">0</span><span
+                  class="font-bold text-xl" style="color: var(--color-total-text)">
+                  ¥</span>
               </div>
-              <hr
-                class="my-4"
-                style="border-top: 1px solid var(--color-hr-border)"
-              />
-              <div
-                class="flex justify-between items-center text-xl font-extrabold"
-                style="color: var(--color-net-total-text)"
-              >
-                <span>Net Total:</span>
-                <div>
-                  <span id="recordNetTotal" class="text-2xl">0</span>
-                  <span
-                    class="font-bold text-xl"
-                    style="color: var(--color-net-total-text)"
-                  >
-                    ¥</span
-                  >
-                </div>
+            </div>
+            <hr class="my-4" style="border-top: 1px solid var(--color-hr-border)" />
+            <div class="flex justify-between items-center text-xl font-extrabold"
+              style="color: var(--color-net-total-text)">
+              <span>Net Total:</span>
+              <div>
+                <span id="recordNetTotal" class="text-2xl">0</span>
+                <span class="font-bold text-xl" style="color: var(--color-net-total-text)">
+                  ¥</span>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Checkout Button -->
-          <button
-            id="checkOutBtn"
-            class="w-full p-4 rounded-xl font-bold text-xl shadow-lg hover:bg-green-700 transition-colors duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
-            style="
+        <!-- Checkout Button -->
+        <button id="checkOutBtn"
+          class="w-full p-4 rounded-xl font-bold text-xl shadow-lg hover:bg-green-700 transition-colors duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+          style="
               background-color: var(--color-net-total-text);
               color: #ffffff;
-            "
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 inline-block mr-2"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3 10v11l6-3 6 3 6-3V10m-12 8a2 2 0 11-4 0 2 2 0 014 0zM17 8a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-            </svg>
-            Print Invoice
-          </button>
-        </aside>
-      </main>
+            ">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 10v11l6-3 6 3 6-3V10m-12 8a2 2 0 11-4 0 2 2 0 014 0zM17 8a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          Print Invoice
+        </button>
+      </aside>
+    </main>
 
-      <!-- Manage Inventory Sidebar -->
-      <aside
-        id="manageInventorySideBar"
-        class="fixed top-0 right-0 h-full w-[350px] sm:w-[500px] shadow-2xl transform translate-x-full transition-transform ease-in-out duration-300 p-6 z-50 rounded-l-xl border-l overflow-y-auto custom-scrollbar"
-        style="
+    <!-- Manage Inventory Sidebar -->
+    <aside id="manageInventorySideBar"
+      class="fixed top-0 right-0 h-full w-[350px] sm:w-[500px] shadow-2xl transform translate-x-full transition-transform ease-in-out duration-300 p-6 z-50 rounded-l-xl border-l overflow-y-auto custom-scrollbar"
+      style="
           background-color: var(--color-sidebar-bg);
           border-color: var(--color-sidebar-border);
-        "
-      >
-        <div class="flex justify-between items-center mb-6">
-          <h2
-            class="text-2xl font-bold"
-            style="color: var(--color-text-primary)"
-          >
-            Manage Inventory
-          </h2>
-          <button
-            id="closeMangeInventoryBtn"
-            class="focus:outline-none text-2xl font-bold"
-            style="color: var(--color-label-text)"
-          >
-            &times;
-          </button>
-        </div>
+        ">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold" style="color: var(--color-text-primary)">
+          Manage Inventory
+        </h2>
+        <button id="closeMangeInventoryBtn" class="focus:outline-none text-2xl font-bold"
+          style="color: var(--color-label-text)">
+          &times;
+        </button>
+      </div>
 
-        <!-- Existing Product List -->
-        <div class="mb-8">
-          <h3
-            class="text-xl font-semibold mb-4"
-            style="color: var(--color-label-text)"
-          >
-            Existing Products
-          </h3>
-          <div
-            id="productGroup"
-            class="space-y-3 pr-2 custom-scrollbar max-h-96 overflow-y-auto"
-          >
-            <!-- Products will be dynamically loaded here -->
+      <!-- Existing Product List -->
+      <div class="mb-8">
+        <h3 class="text-xl font-semibold mb-4" style="color: var(--color-label-text)">
+          Existing Products
+        </h3>
+        <div id="productGroup" class="space-y-3 pr-2 custom-scrollbar max-h-96 overflow-y-auto">
+          <!-- Products will be dynamically loaded here -->
+        </div>
+      </div>
+
+      <!-- Add New Product Form -->
+      <div>
+        <h3 class="text-xl font-semibold mb-4" style="color: var(--color-label-text)">
+          Add New Product
+        </h3>
+        <div class="space-y-4">
+          <div>
+            <label for="newProductName" class="block text-sm font-medium mb-2"
+              style="color: var(--color-label-text)">Product Name</label>
+            <input type="text" id="newProductName" placeholder="e.g., UI/UX Design"
+              class="w-full p-3 rounded-lg focus:ring-2 transition-all duration-200" style="
+                  background-color: var(--color-input-bg);
+                  border: 1px solid var(--color-input-border);
+                  color: var(--color-text-primary);
+                  --tw-ring-color: var(--color-manage-btn-bg);
+                " />
           </div>
-        </div>
-
-        <!-- Add New Product Form -->
-        <div>
-          <h3
-            class="text-xl font-semibold mb-4"
-            style="color: var(--color-label-text)"
-          >
-            Add New Product
-          </h3>
-          <div class="space-y-4">
-            <div>
-              <label
-                for="newProductName"
-                class="block text-sm font-medium mb-2"
-                style="color: var(--color-label-text)"
-                >Product Name</label
-              >
-              <input
-                type="text"
-                id="newProductName"
-                placeholder="e.g., UI/UX Design"
-                class="w-full p-3 rounded-lg focus:ring-2 transition-all duration-200"
-                style="
+          <div>
+            <label for="newProductPrice" class="block text-sm font-medium mb-2"
+              style="color: var(--color-label-text)">Price (¥)</label>
+            <input type="number" id="newProductPrice" min="0" placeholder="e.g., 250000"
+              class="w-full p-3 rounded-lg focus:ring-2 transition-all duration-200" style="
                   background-color: var(--color-input-bg);
                   border: 1px solid var(--color-input-border);
                   color: var(--color-text-primary);
                   --tw-ring-color: var(--color-manage-btn-bg);
-                "
-              />
-            </div>
-            <div>
-              <label
-                for="newProductPrice"
-                class="block text-sm font-medium mb-2"
-                style="color: var(--color-label-text)"
-                >Price (¥)</label
-              >
-              <input
-                type="number"
-                id="newProductPrice"
-                min="0"
-                placeholder="e.g., 250000"
-                class="w-full p-3 rounded-lg focus:ring-2 transition-all duration-200"
-                style="
-                  background-color: var(--color-input-bg);
-                  border: 1px solid var(--color-input-border);
-                  color: var(--color-text-primary);
-                  --tw-ring-color: var(--color-manage-btn-bg);
-                "
-              />
-            </div>
-            <button
-              id="newProductBtn"
-              class="w-full p-3 rounded-lg font-semibold shadow-md transform hover:scale-105 transition-colors duration-200"
-              style="
+                " />
+          </div>
+          <button id="newProductBtn"
+            class="w-full p-3 rounded-lg font-semibold shadow-md transform hover:scale-105 transition-colors duration-200"
+            style="
                 background-color: var(--color-header-bg-start);
                 color: #ffffff;
-              "
-            >
-              Add Product
-            </button>
-          </div>
+              ">
+            Add Product
+          </button>
         </div>
-      </aside>
+      </div>
+    </aside>
 
-      <!-- Templates for JavaScript cloning -->
-      <template id="productListTemplate">
-        <div
-          class="product-list flex justify-between items-center p-3 rounded-md shadow-sm border animate__animated animate__fadeIn"
-          style="
+    <!-- Templates for JavaScript cloning -->
+    <template id="productListTemplate">
+      <div
+        class="product-list flex justify-between items-center p-3 rounded-md shadow-sm border animate__animated animate__fadeIn"
+        style="
             background-color: var(--color-product-list-bg);
             border-color: var(--color-product-list-border);
-          "
-        >
-          <div class="flex-1">
-            <span
-              class="product-name font-medium"
-              style="color: var(--color-product-name-text)"
-            ></span>
-            -
-            <span
-              class="product-price"
-              style="color: var(--color-product-price-text)"
-            ></span>
-            ¥
-          </div>
-          <button
-            class="product-remove w-7 h-7 flex items-center justify-center rounded-full text-sm font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-75"
-            style="
+          ">
+        <div class="flex-1">
+          <span class="product-name font-medium" style="color: var(--color-product-name-text)"></span>
+          -
+          <span class="product-price" style="color: var(--color-product-price-text)"></span>
+          ¥
+        </div>
+        <button
+          class="product-remove w-7 h-7 flex items-center justify-center rounded-full text-sm font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-75"
+          style="
               background-color: var(--color-remove-button-bg);
               color: #ffffff;
               --tw-ring-color: var(--color-remove-button-bg);
-            "
-          >
-            &times;
-          </button>
-        </div>
-      </template>
+            ">
+          &times;
+        </button>
+      </div>
+    </template>
 
-      <template id="recordRowTemplate">
-        <tr
-          class="record-row hover:bg-[var(--color-record-row-hover)] border-b transition-colors duration-150 animate__animated animate__fadeIn"
-          style="border-color: var(--color-table-row-border)"
-        >
-          <td class="py-3 px-6 text-left whitespace-nowrap">
-            <div
-              class="record-product-name font-medium"
-              style="color: var(--color-product-name-text)"
-            ></div>
-          </td>
-          <td class="py-3 px-6 text-left">
-            <div
-              class="record-product-price"
-              style="color: var(--color-product-price-text)"
-            ></div>
-          </td>
-          <td class="py-3 px-6 text-left">
-            <div class="flex items-center">
-              <button
-                class="quantity-sub w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold focus:outline-none focus:ring-2 focus:ring-opacity-75 print:hidden"
-                style="
-                  background-color: var(--color-quantity-button-bg);
-                  color: var(--color-quantity-button-text);
-                  --tw-ring-color: var(--color-quantity-button-bg);
-                "
-              >
-                -
-              </button>
-              <span
-                class="record-quantity mx-2 font-medium"
-                style="color: var(--color-product-name-text)"
-              ></span>
-              <button
-                class="quantity-add w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold focus:outline-none focus:ring-2 focus:ring-opacity-75 print:hidden"
-                style="
-                  background-color: var(--color-quantity-button-bg);
-                  color: var(--color-quantity-button-text);
-                  --tw-ring-color: var(--color-quantity-button-bg);
-                "
-              >
-                +
-              </button>
-            </div>
-          </td>
-          <td class="py-3 px-6 text-right">
-            <div
-              class="record-cost font-semibold"
-              style="color: var(--color-record-cost-text)"
-            ></div>
-          </td>
-          <td class="py-3 px-6 text-center">
+    <template id="recordRowTemplate">
+      <tr
+        class="record-row hover:bg-[var(--color-record-row-hover)] border-b transition-colors duration-150 animate__animated animate__fadeIn"
+        style="border-color: var(--color-table-row-border)">
+        <td class="py-3 px-6 text-left whitespace-nowrap">
+          <div class="record-product-name font-medium" style="color: var(--color-product-name-text)"></div>
+        </td>
+        <td class="py-3 px-6 text-left">
+          <div class="record-product-price" style="color: var(--color-product-price-text)"></div>
+        </td>
+        <td class="py-3 px-6 text-left">
+          <div class="flex items-center">
             <button
-              class="remove-record w-7 h-7 flex items-center justify-center rounded-full text-sm font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-75 print:hidden"
+              class="quantity-sub w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold focus:outline-none focus:ring-2 focus:ring-opacity-75 print:hidden"
               style="
+                  background-color: var(--color-quantity-button-bg);
+                  color: var(--color-quantity-button-text);
+                  --tw-ring-color: var(--color-quantity-button-bg);
+                ">
+              -
+            </button>
+            <span class="record-quantity mx-2 font-medium" style="color: var(--color-product-name-text)"></span>
+            <button
+              class="quantity-add w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold focus:outline-none focus:ring-2 focus:ring-opacity-75 print:hidden"
+              style="
+                  background-color: var(--color-quantity-button-bg);
+                  color: var(--color-quantity-button-text);
+                  --tw-ring-color: var(--color-quantity-button-bg);
+                ">
+              +
+            </button>
+          </div>
+        </td>
+        <td class="py-3 px-6 text-right">
+          <div class="record-cost font-semibold" style="color: var(--color-record-cost-text)"></div>
+        </td>
+        <td class="py-3 px-6 text-center">
+          <button
+            class="remove-record w-7 h-7 flex items-center justify-center rounded-full text-sm font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-75 print:hidden"
+            style="
                 background-color: var(--color-remove-button-bg);
                 color: #ffffff;
                 --tw-ring-color: var(--color-remove-button-bg);
-              "
-            >
-              &times;
-            </button>
-          </td>
-        </tr>
-      </template>
-    </div>
+              ">
+            &times;
+          </button>
+        </td>
+      </tr>
+    </template>
+  </div>
 
-    <script type="module" src="./main.js"></script>
-    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
-  </body>
+  <script type="module" src="./main.js"></script>
+  <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+</body>
+
 </html>
