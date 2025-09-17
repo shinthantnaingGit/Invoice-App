@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Padauk:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Padauk:wght@400;700&display=swap");
 @import "./node_modules/sweetalert2/dist/sweetalert2.min.css";
 @import "./node_modules/animate.css/animate.min.css";
 @import "flowbite/src/themes/default";
@@ -11,12 +11,10 @@
 
   --font-family-inter: "Inter", sans-serif;
   --font-family-montserrat: "Montserrat", sans-serif;
-  --font-family-padauk: "Padauk", sans-serif
+  --font-family-padauk: "Padauk", sans-serif;
 
   /* Optional: If you want Ancizar Serif to be your default serif font */
   /* --font-family-serif: "Ancizar Serif", serif; */
-
-  
 }
 @utility container {
   margin-inline: auto;
@@ -34,203 +32,220 @@
   @apply bg-blue-600 text-white font-family-montserrat font-bold;
 }
 
-       /* Define CSS Variables for theming */
-        :root {
-            /* Light Theme Defaults */
-            --color-bg-primary: #f3f4f6; /* gray-100 */
-            --color-text-primary: #111827; /* gray-900 */
-            --color-card-bg: #ffffff;
-            --color-card-border: #e5e7eb; /* gray-200 */
-            --color-header-bg-start: #1d4ed8; /* blue-700 */
-            --color-header-bg-end: #1e40af; /* blue-900 */
-            --color-sidebar-bg: #ffffff;
-            --color-sidebar-border: #e5e7eb;
-            --color-input-bg: #ffffff;
-            --color-input-border: #d1d5db; /* gray-300 */
-            --color-label-text: #374151; /* gray-700 */
-            --color-table-header-bg: #f3f4f6; /* gray-100 */
-            --color-table-header-text: #4b5563; /* gray-600 */
-            --color-table-row-text: #374151; /* gray-700 */
-            --color-table-row-border: #e5e7eb;
-            --color-product-list-bg: #f9fafb; /* gray-50 */
-            --color-product-list-border: #e5e7eb;
-            --color-product-name-text: #1f2937; /* gray-800 */
-            --color-product-price-text: #4b5563; /* gray-600 */
-            --color-remove-button-bg: #ef4444; /* red-500 */
-            --color-remove-button-hover-bg: #dc2626; /* red-600 */
-            --color-quantity-button-bg: #dbeafe; /* blue-100 */
-            --color-quantity-button-text: #1d4ed8; /* blue-700 */
-            --color-quantity-button-hover-bg: #bfdbfe; /* blue-200 */
-            --color-record-cost-text: #1f2937; /* gray-800 */
-            --color-total-text: #1d4ed8; /* blue-700 */
-            --color-net-total-text: #16a34a; /* green-700 */
-            --color-hr-border: #d1d5db; /* gray-300 */
-            --color-manage-btn-bg: #ffffff;
-            --color-manage-btn-text: #1e40af;
-            --color-manage-btn-hover-bg: #e0f2fe;
-            --color-record-row-hover: #e5e7eb;
+/* Define CSS Variables for theming */
+:root {
+  /* Light Theme Defaults */
+  --color-bg-primary: #f3f4f6; /* gray-100 */
+  --color-text-primary: #111827; /* gray-900 */
+  --color-card-bg: #ffffff;
+  --color-card-border: #e5e7eb; /* gray-200 */
+  --color-header-bg-start: #1d4ed8; /* blue-700 */
+  --color-header-bg-end: #1e40af; /* blue-900 */
+  --color-sidebar-bg: #ffffff;
+  --color-sidebar-border: #e5e7eb;
+  --color-input-bg: #ffffff;
+  --color-input-border: #d1d5db; /* gray-300 */
+  --color-label-text: #374151; /* gray-700 */
+  --color-table-header-bg: #f3f4f6; /* gray-100 */
+  --color-table-header-text: #4b5563; /* gray-600 */
+  --color-table-row-text: #374151; /* gray-700 */
+  --color-table-row-border: #e5e7eb;
+  --color-product-list-bg: #f9fafb; /* gray-50 */
+  --color-product-list-border: #e5e7eb;
+  --color-product-name-text: #1f2937; /* gray-800 */
+  --color-product-price-text: #4b5563; /* gray-600 */
+  --color-remove-button-bg: #ef4444; /* red-500 */
+  --color-remove-button-hover-bg: #dc2626; /* red-600 */
+  --color-quantity-button-bg: #dbeafe; /* blue-100 */
+  --color-quantity-button-text: #1d4ed8; /* blue-700 */
+  --color-quantity-button-hover-bg: #bfdbfe; /* blue-200 */
+  --color-record-cost-text: #1f2937; /* gray-800 */
+  --color-total-text: #1d4ed8; /* blue-700 */
+  --color-net-total-text: #16a34a; /* green-700 */
+  --color-hr-border: #d1d5db; /* gray-300 */
+  --color-manage-btn-bg: #ffffff;
+  --color-manage-btn-text: #1e40af;
+  --color-manage-btn-hover-bg: #e0f2fe;
+  --color-record-row-hover: #e5e7eb;
 
-            /* Scrollbar for Light Theme */
-            --scrollbar-track-bg: #e2e8f0;
-            --scrollbar-thumb-bg: #94a3b8;
-            --scrollbar-thumb-hover-bg: #64748b;
-        }
+  /* Scrollbar for Light Theme */
+  --scrollbar-track-bg: #e2e8f0;
+  --scrollbar-thumb-bg: #94a3b8;
+  --scrollbar-thumb-hover-bg: #64748b;
+}
 
-        html[data-theme='dark'] {
-            /* Dark Theme Overrides */
-            --color-bg-primary: #111827; /* gray-900 */
-            --color-text-primary: #f3f4f6; /* gray-100 */
-            --color-card-bg: #1f2937; /* gray-800 */
-            --color-card-border: #374151; /* gray-700 */
-            --color-header-bg-start: #4338ca; /* indigo-800 */
-            --color-header-bg-end: #5a32a3; /* purple-900 */
-            --color-sidebar-bg: #1f2937;
-            --color-sidebar-border: #374151;
-            --color-input-bg: #374151; /* gray-700 */
-            --color-input-border: #4b5563; /* gray-600 */
-            --color-label-text: #d1d5db; /* gray-300 */
-            --color-table-header-bg: #374151; /* gray-700 */
-            --color-table-header-text: #d1d5db; /* gray-300 */
-            --color-table-row-text: #e5e7eb; /* gray-200 */
-            --color-table-row-border: #374151;
-            --color-product-list-bg: #374151; /* gray-700 */
-            --color-product-list-border: #4b5563; /* gray-600 */
-            --color-product-name-text: #f3f4f6; /* gray-100 */
-            --color-product-price-text: #d1d5db; /* gray-300 */
-            --color-remove-button-bg: #dc2626; /* red-600 */
-            --color-remove-button-hover-bg: #b91c1c; /* red-700 */
-            --color-quantity-button-bg: #6b21a8; /* purple-600 */
-            --color-quantity-button-text: #ffffff;
-            --color-quantity-button-hover-bg: #7e22ce; /* purple-700 */
-            --color-record-cost-text: #2dd4bf; /* teal-400 */
-            --color-total-text: #2dd4bf; /* teal-400 */
-            --color-net-total-text: #4ade80; /* green-400 */
-            --color-hr-border: #4b5563; /* gray-600 */
-            --color-manage-btn-bg: #2dd4bf; /* teal-400 */
-            --color-manage-btn-text: #1f2937;
-            --color-manage-btn-hover-bg: #20c2b2;
-            --color-record-row-hover: #111827; /* gray-900 */
+html[data-theme="dark"] {
+  /* Dark Theme Overrides */
+  --color-bg-primary: #111827; /* gray-900 */
+  --color-text-primary: #f3f4f6; /* gray-100 */
+  --color-card-bg: #1f2937; /* gray-800 */
+  --color-card-border: #374151; /* gray-700 */
+  --color-header-bg-start: #4338ca; /* indigo-800 */
+  --color-header-bg-end: #5a32a3; /* purple-900 */
+  --color-sidebar-bg: #1f2937;
+  --color-sidebar-border: #374151;
+  --color-input-bg: #374151; /* gray-700 */
+  --color-input-border: #4b5563; /* gray-600 */
+  --color-label-text: #d1d5db; /* gray-300 */
+  --color-table-header-bg: #374151; /* gray-700 */
+  --color-table-header-text: #d1d5db; /* gray-300 */
+  --color-table-row-text: #e5e7eb; /* gray-200 */
+  --color-table-row-border: #374151;
+  --color-product-list-bg: #374151; /* gray-700 */
+  --color-product-list-border: #4b5563; /* gray-600 */
+  --color-product-name-text: #f3f4f6; /* gray-100 */
+  --color-product-price-text: #d1d5db; /* gray-300 */
+  --color-remove-button-bg: #dc2626; /* red-600 */
+  --color-remove-button-hover-bg: #b91c1c; /* red-700 */
+  --color-quantity-button-bg: #6b21a8; /* purple-600 */
+  --color-quantity-button-text: #ffffff;
+  --color-quantity-button-hover-bg: #7e22ce; /* purple-700 */
+  --color-record-cost-text: #2dd4bf; /* teal-400 */
+  --color-total-text: #2dd4bf; /* teal-400 */
+  --color-net-total-text: #4ade80; /* green-400 */
+  --color-hr-border: #4b5563; /* gray-600 */
+  --color-manage-btn-bg: #2dd4bf; /* teal-400 */
+  --color-manage-btn-text: #1f2937;
+  --color-manage-btn-hover-bg: #20c2b2;
+  --color-record-row-hover: #111827; /* gray-900 */
 
-            /* Scrollbar for Dark Theme */
-            --scrollbar-track-bg: #2d3748;
-            --scrollbar-thumb-bg: #4a5568;
-            --scrollbar-thumb-hover-bg: #5a667b;
-        }
+  /* Scrollbar for Dark Theme */
+  --scrollbar-track-bg: #2d3748;
+  --scrollbar-thumb-bg: #4a5568;
+  --scrollbar-thumb-hover-bg: #5a667b;
+}
 
-        body {
-            background-color: var(--color-bg-primary);
-            color: var(--color-text-primary);
-        }
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: var(--scrollbar-track-bg);
-        }
+/* Smooth transitions for dark mode */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    color 0.3s ease;
+}
 
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: var(--scrollbar-thumb-bg);
-        }
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-bg);
+}
 
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: var(--scrollbar-thumb-hover-bg);
-        }
-       
-        /* Custom styles for print, if needed */
-        @media print {
-            /* Hide the sidebar and other non-essential elements for printing */
-            #manageInventorySideBar,
-            #openManageInventoryBtn,
-            #checkOutBtn,
-            #themeToggleButton,
-            form button {
-                display: none !important;
-            }
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-bg);
+}
 
-            /* Adjust main content for print */
-            body {
-                background-color: #fff !important;
-                color: #000 !important; /* Ensure text is black on white for printing */
-            }
-            #app {
-                margin: 0 !important;
-                padding: 0 !important;
-                background-color: #fff !important;
-            }
-            .container {
-                max-width: 100% !important;
-                padding: 0 !important;
-            }
-            .grid {
-                display: block !important; /* Stack elements for better printing */
-            }
-            .lg\:col-span-2, .lg\:col-span-1 {
-                width: 100% !important;
-                margin-bottom: 1rem !important;
-            }
-            table, th, td {
-                border-color: #e2e8f0 !important; /* Light border for print table */
-            }
-            .bg-gray-100 {
-                background-color: #f7fafc !important; /* Light background for print table header */
-            }
-            /* Ensure dark mode styles don't bleed into print */
-            html { /* Reset theme for print */
-                background-color: #fff !important;
-                color: #000 !important;
-            }
-            html[data-theme='dark'] { /* Explicitly override dark mode for print */
-                background-color: #fff !important;
-                color: #000 !important;
-            }
-            /* Note: We no longer have .dark\: classes directly, using CSS variables and data-theme */
-        }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover-bg);
+}
 
-               /* Custom styles for print, if needed */
-        @media print {
-            /* Hide the sidebar and other non-essential elements for printing */
-            #manageInventorySideBar,
-            #openManageInventoryBtn,
-            #checkOutBtn,
-            #themeToggleButton,
-            #invoiceItemCreationg,
-            form button {
-                display: none !important;
-            }
+/* Custom styles for print, if needed */
+@media print {
+  /* Hide the sidebar and other non-essential elements for printing */
+  #manageInventorySideBar,
+  #openManageInventoryBtn,
+  #checkOutBtn,
+  #themeToggleButton,
+  form button {
+    display: none !important;
+  }
 
-            /* Adjust main content for print */
-            body {
-                background-color: #fff !important;
-                color: #000 !important; /* Ensure text is black on white for printing */
-            }
-            #app {
-                margin: 0 !important;
-                padding: 0 !important;
-                background-color: #fff !important;
-            }
-            .container {
-                max-width: 100% !important;
-                padding: 0 !important;
-            }
-            .grid {
-                display: block !important; /* Stack elements for better printing */
-            }
-            .lg\:col-span-2, .lg\:col-span-1 {
-                width: 100% !important;
-                margin-bottom: 1rem !important;
-            }
-            table, th, td {
-                border-color: #e2e8f0 !important; /* Light border for print table */
-            }
-            .bg-gray-100 {
-                background-color: #f7fafc !important; /* Light background for print table header */
-            }
-            /* Ensure dark mode styles don't bleed into print */
-            html { /* Reset theme for print */
-                background-color: #fff !important;
-                color: #000 !important;
-            }
-            html[data-theme='dark'] { /* Explicitly override dark mode for print */
-                background-color: #fff !important;
-                color: #000 !important;
-            }
-            /* Note: We no longer have .dark\: classes directly, using CSS variables and data-theme */
-        }
+  /* Adjust main content for print */
+  body {
+    background-color: #fff !important;
+    color: #000 !important; /* Ensure text is black on white for printing */
+  }
+  #app {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #fff !important;
+  }
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  .grid {
+    display: block !important; /* Stack elements for better printing */
+  }
+  .lg\:col-span-2,
+  .lg\:col-span-1 {
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+  table,
+  th,
+  td {
+    border-color: #e2e8f0 !important; /* Light border for print table */
+  }
+  .bg-gray-100 {
+    background-color: #f7fafc !important; /* Light background for print table header */
+  }
+  /* Ensure dark mode styles don't bleed into print */
+  html {
+    /* Reset theme for print */
+    background-color: #fff !important;
+    color: #000 !important;
+  }
+  html[data-theme="dark"] {
+    /* Explicitly override dark mode for print */
+    background-color: #fff !important;
+    color: #000 !important;
+  }
+  /* Note: We no longer have .dark\: classes directly, using CSS variables and data-theme */
+}
+
+/* Custom styles for print, if needed */
+@media print {
+  /* Hide the sidebar and other non-essential elements for printing */
+  #manageInventorySideBar,
+  #openManageInventoryBtn,
+  #checkOutBtn,
+  #themeToggleButton,
+  #invoiceItemCreationg,
+  form button {
+    display: none !important;
+  }
+
+  /* Adjust main content for print */
+  body {
+    background-color: #fff !important;
+    color: #000 !important; /* Ensure text is black on white for printing */
+  }
+  #app {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #fff !important;
+  }
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  .grid {
+    display: block !important; /* Stack elements for better printing */
+  }
+  .lg\:col-span-2,
+  .lg\:col-span-1 {
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+  table,
+  th,
+  td {
+    border-color: #e2e8f0 !important; /* Light border for print table */
+  }
+  .bg-gray-100 {
+    background-color: #f7fafc !important; /* Light background for print table header */
+  }
+  /* Ensure dark mode styles don't bleed into print */
+  html {
+    /* Reset theme for print */
+    background-color: #fff !important;
+    color: #000 !important;
+  }
+  html[data-theme="dark"] {
+    /* Explicitly override dark mode for print */
+    background-color: #fff !important;
+    color: #000 !important;
+  }
+  /* Note: We no longer have .dark\: classes directly, using CSS variables and data-theme */
+}
