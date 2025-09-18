@@ -9,6 +9,7 @@ import {
 } from "./selectors";
 import { products } from "./state";
 import { v4 as uuidv4 } from "uuid";
+import { translations } from "./translations.js";
 //CREATE RECORD FORM HANDLER
 export const createRecordFormHandler = (event) => {
   event.preventDefault();
@@ -27,12 +28,18 @@ export const createRecordFormHandler = (event) => {
   if (existedRecord == null) {
     recordGroup.append(createNewRecordRow(product, formData.get("quantity")));
   } else {
+    const currentLanguage =
+      window.languageHandler?.getCurrentLanguage() || "ja";
+    const currentTranslations = translations[currentLanguage];
+    const displayName =
+      currentLanguage === "ja" ? product.nameJa || product.name : product.name;
+
     Swal.fire({
-      title: `${product.name} is already existed. Do you want to upgrade quantity?`,
-      text: "You won't be able to revert this!",
+      title: `${displayName} ${currentTranslations.productAlreadyExists}`,
+      text: currentTranslations.youWontBeAbleToRevert,
       icon: "question",
       showCancelButton: true,
-      confirmButtonText: "Yes, upgrade quantity!",
+      confirmButtonText: currentTranslations.yesUpgradeQuantity,
     }).then((result) => {
       if (result.isConfirmed) {
         // console.log(product.id);
@@ -53,7 +60,7 @@ export const createRecordFormHandler = (event) => {
   createRecordForm.reset();
 };
 //CREATE RECORD ROW
-export const createNewRecordRow = ({ id, name, price }, quantity) => {
+export const createNewRecordRow = ({ id, name, nameJa, price }, quantity) => {
   const recordRowTP = recordRowTemplate.content.cloneNode(true);
   const currentRecordRow = recordRowTP.querySelector(".record-row");
   const recordProductName = currentRecordRow.querySelector(
@@ -64,11 +71,16 @@ export const createNewRecordRow = ({ id, name, price }, quantity) => {
   );
   const recordQuantity = currentRecordRow.querySelector(".record-quantity");
   const recordCost = currentRecordRow.querySelector(".record-cost");
+
+  // Get current language and display appropriate name
+  const currentLanguage = window.languageHandler?.getCurrentLanguage() || "ja";
+  const displayName = currentLanguage === "ja" ? nameJa || name : name;
+
   // currentRecordRow.setAttribute("product-id", id);
   currentRecordRow.id = "row" + id;
   // console.log("row Id",currentRecordRow.id);
   // currentRecordRow.id = "row" + uuidv4();
-  recordProductName.innerText = name;
+  recordProductName.innerText = displayName;
   recordProductPrice.innerText = price;
   recordQuantity.innerText = quantity;
   recordCost.innerText = price * quantity;
@@ -97,26 +109,26 @@ export const recordGroupHandler = (event) => {
 };
 //REMOVE RECORD ROW
 export const removeRecordRow = (rowId) => {
+  const currentLanguage = window.languageHandler?.getCurrentLanguage() || "ja";
+  const currentTranslations = translations[currentLanguage];
+
   Swal.fire({
-    title: "Are you sure to Remove?",
-    text: "You won't be able to revert this!",
+    title: currentTranslations.areYouSureToRemove,
+    text: currentTranslations.youWontBeAbleToRevert,
     icon: "question",
     showCancelButton: true,
-    confirmButtonText: "Yes, delete it!",
+    confirmButtonText: currentTranslations.yesDeleteIt,
   }).then((result) => {
     if (result.isConfirmed) {
       const currentRecordRow = recordGroup.querySelector(`#${rowId}`);
-      currentRecordRow.classList.add(
-        "animate__animated",
-        "animate__fadeOut"
-      );
+      currentRecordRow.classList.add("animate__animated", "animate__fadeOut");
       currentRecordRow.addEventListener("animationend", () => {
         currentRecordRow.remove();
       });
 
       Swal.fire({
-        title: "Deleted!",
-        text: "Your file has been deleted.",
+        title: currentTranslations.deleted,
+        text: currentTranslations.yourFileHasBeenDeleted,
         icon: "success",
       });
     }

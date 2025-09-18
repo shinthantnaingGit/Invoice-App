@@ -9,6 +9,7 @@ import {
 } from "./selectors";
 import { v4 as uuidv4 } from "uuid";
 import { products } from "./state";
+import { translations } from "./translations.js";
 
 //ADD NEW PRODUCT BTN
 export const newProductBtnHandler = () => {
@@ -29,16 +30,20 @@ export const newProductBtnHandler = () => {
         newProductPrice.valueAsNumber
       )
     );
+    const currentLanguage =
+      window.languageHandler?.getCurrentLanguage() || "ja";
+    const displayName =
+      currentLanguage === "ja" ? newProductName.value : newProductName.value;
     productSelect.append(
-      new Option(
-        `${newProductName.value} - ${newProductPrice.valueAsNumber}`,
-        createId
-      )
+      new Option(`${displayName} - ${newProductPrice.valueAsNumber}`, createId)
     );
     newProductName.value = "";
     newProductPrice.value = "";
   } else {
-    Swal.fire("No Product Name or Price");
+    const currentLanguage =
+      window.languageHandler?.getCurrentLanguage() || "ja";
+    const currentTranslations = translations[currentLanguage];
+    Swal.fire(currentTranslations.noProductNameOrPrice);
   }
 };
 //CREATE NEW PRODUCT LIST
@@ -70,17 +75,20 @@ export const productGroupHandler = (event) => {
 //DELETE PRODUCT LIST
 export const deleteProductList = (listId) => {
   // console.log("You Deleted");
+  const currentLanguage = window.languageHandler?.getCurrentLanguage() || "ja";
+  const currentTranslations = translations[currentLanguage];
+
   Swal.fire({
-    title: "Are you sure to Remove?",
-    text: "You won't be able to revert this!",
+    title: currentTranslations.areYouSureToRemove,
+    text: currentTranslations.youWontBeAbleToRevert,
     icon: "question",
     showCancelButton: true,
-    confirmButtonText: "Yes, delete it!",
+    confirmButtonText: currentTranslations.yesDeleteIt,
   }).then((result) => {
     if (result.isConfirmed) {
       Swal.fire({
-        title: "Deleted!",
-        text: "Your file has been deleted.",
+        title: currentTranslations.deleted,
+        text: currentTranslations.yourFileHasBeenDeleted,
         icon: "success",
       });
       const currentProductList = productGroup.querySelector(`#${listId}`);
@@ -110,9 +118,12 @@ export const deleteProductList = (listId) => {
 };
 //RENDER PRODUCTS
 export const productRender = (products) => {
-  products.forEach(({ id, name, price }) => {
-    productGroup.append(createNewProductList(id, name, price));
-    productSelect.append(new Option(`${name} - ${price}`, id));
+  const currentLanguage = window.languageHandler?.getCurrentLanguage() || "ja";
+
+  products.forEach(({ id, name, nameJa, price }) => {
+    const displayName = currentLanguage === "ja" ? nameJa || name : name;
+    productGroup.append(createNewProductList(id, displayName, price));
+    productSelect.append(new Option(`${displayName} - ${price}`, id));
   });
 };
 // ENTER KEY FOR PRODUCT NAME INPUT
@@ -130,4 +141,15 @@ export const priceInputEnterKeyHandler = (event) => {
     newProductBtnHandler();
     newProductName.focus();
   }
+};
+
+// RE-RENDER PRODUCTS WHEN LANGUAGE CHANGES
+export const reRenderProducts = () => {
+  // Clear existing products from UI
+  productGroup.innerHTML = "";
+  productSelect.innerHTML =
+    '<option value="" data-translate="chooseProduct">-- 商品を選択してください --</option>';
+
+  // Re-render all products with current language
+  productRender(products);
 };

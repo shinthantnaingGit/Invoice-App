@@ -2,8 +2,12 @@ export const app = document.querySelector("#app");
 export const manageInventorySideBar = document.querySelector(
   "#manageInventorySideBar"
 );
-export const openManageInventoryBtn = document.querySelector("#openManageInventoryBtn");
-export const closeMangeInventoryBtn = document.querySelector("#closeMangeInventoryBtn");
+export const openManageInventoryBtn = document.querySelector(
+  "#openManageInventoryBtn"
+);
+export const closeMangeInventoryBtn = document.querySelector(
+  "#closeMangeInventoryBtn"
+);
 export const newProductName = document.querySelector("#newProductName");
 export const newProductPrice = document.querySelector("#newProductPrice");
 export const newProductBtn = document.querySelector("#newProductBtn");
@@ -22,4 +26,6 @@ export const checkOutBtn = document.querySelector("#checkOutBtn");
 export const themeToggleButton = document.querySelector("#themeToggleButton");
 export const sunIcon = document.querySelector("#sunIcon");
 export const moonIcon = document.querySelector("#moonIcon");
-
+export const languageToggleButton = document.querySelector(
+  "#languageToggleButton"
+);
