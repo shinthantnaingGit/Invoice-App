@@ -112,13 +112,10 @@ class LanguageHandler {
 
   updateLanguageToggleButton() {
     if (this.languageToggleButton) {
-      const nextLanguage = this.currentLanguage === "en" ? "ja" : "en";
-
-      // Update flag icon only
-      const flagIcon = this.languageToggleButton.querySelector(".flag-icon");
-      if (flagIcon) {
-        flagIcon.textContent = nextLanguage === "en" ? "🇺🇸" : "🇯🇵";
-      }
+      // Update tooltip to show current language
+      const currentLanguageName =
+        this.currentLanguage === "en" ? "English" : "日本語";
+      this.languageToggleButton.title = `Current: ${currentLanguageName} - Click to switch`;
     }
   }
 

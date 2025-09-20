@@ -139,6 +139,28 @@ body {
   background: var(--scrollbar-thumb-hover-bg);
 }
 
+/* Mobile responsive header styles */
+@media (max-width: 640px) {
+  /* Ensure the mobile icon is properly centered and sized */
+  .mobile-header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  /* Adjust header padding for mobile */
+  header {
+    padding: 0.75rem 1rem;
+  }
+
+  /* Ensure proper spacing between mobile icon and buttons */
+  header .flex.items-center.space-x-4 {
+    gap: 0.5rem;
+  }
+}
+
 /* Custom styles for print, if needed */
 @media print {
   /* Hide the sidebar and other non-essential elements for printing */

@@ -6,7 +6,7 @@
 export const translations = {
   en: {
     // Header
-    companyName: "Mirai IT Solutions",
+    companyName: "Invoice App",
     manageInventory: "Manage Inventory",
 
     // Invoice Creation Section
@@ -58,7 +58,7 @@ export const translations = {
 
   ja: {
     // Header
-    companyName: "未来ITソリューションズ",
+    companyName: "インボイスアプリ",
     manageInventory: "在庫管理",
 
     // Invoice Creation Section
