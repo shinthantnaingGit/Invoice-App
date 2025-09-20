@@ -1,130 +1,66 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Padauk:wght@400;700&display=swap");
 @import "./node_modules/sweetalert2/dist/sweetalert2.min.css";
 @import "./node_modules/animate.css/animate.min.css";
-@import "flowbite/src/themes/default";
-@plugin "flowbite/plugin";
-@source "../node_modules/flowbite";
-@custom-variant dark (&:where(.dark, .dark *));
 @import "tailwindcss";
-@theme {
-  /* Define a new utility class for ......*/
 
-  --font-family-inter: "Inter", sans-serif;
-  --font-family-montserrat: "Montserrat", sans-serif;
-  --font-family-padauk: "Padauk", sans-serif;
-
-  /* Optional: If you want Ancizar Serif to be your default serif font */
-  /* --font-family-serif: "Ancizar Serif", serif; */
+/* Custom font families */
+.font-family-inter {
+  font-family: "Inter", sans-serif;
 }
-@utility container {
+
+.font-family-montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.font-family-padauk {
+  font-family: "Padauk", sans-serif;
+}
+
+/* Custom container utility */
+.container {
   margin-inline: auto;
   padding-inline: 2rem;
 }
 
 .swal2-popup {
-  @apply bg-white dark:bg-gray-800 rounded-lg shadow-lg p-2 opacity-95 dark:opacity-95;
+  @apply bg-white rounded-lg shadow-lg p-2 opacity-95;
 }
 .swal2-title {
-  @apply font-family-montserrat text-3xl font-bold text-gray-800 dark:text-gray-200;
+  @apply text-3xl font-bold text-gray-800;
+  font-family: "Montserrat", sans-serif;
 }
 
 .swal2-confirm {
-  @apply bg-blue-600 text-white font-family-montserrat font-bold;
+  @apply bg-blue-600 text-white font-bold;
+  font-family: "Montserrat", sans-serif;
 }
 
-/* Define CSS Variables for theming */
+/* Scrollbar styles */
 :root {
-  /* Light Theme Defaults */
-  --color-bg-primary: #f3f4f6; /* gray-100 */
-  --color-text-primary: #111827; /* gray-900 */
-  --color-card-bg: #ffffff;
-  --color-card-border: #e5e7eb; /* gray-200 */
-  --color-header-bg-start: #1d4ed8; /* blue-700 */
-  --color-header-bg-end: #1e40af; /* blue-900 */
-  --color-sidebar-bg: #ffffff;
-  --color-sidebar-border: #e5e7eb;
-  --color-input-bg: #ffffff;
-  --color-input-border: #d1d5db; /* gray-300 */
-  --color-label-text: #374151; /* gray-700 */
-  --color-table-header-bg: #f3f4f6; /* gray-100 */
-  --color-table-header-text: #4b5563; /* gray-600 */
-  --color-table-row-text: #374151; /* gray-700 */
-  --color-table-row-border: #e5e7eb;
-  --color-product-list-bg: #f9fafb; /* gray-50 */
-  --color-product-list-border: #e5e7eb;
-  --color-product-name-text: #1f2937; /* gray-800 */
-  --color-product-price-text: #4b5563; /* gray-600 */
-  --color-remove-button-bg: #ef4444; /* red-500 */
-  --color-remove-button-hover-bg: #dc2626; /* red-600 */
-  --color-quantity-button-bg: #dbeafe; /* blue-100 */
-  --color-quantity-button-text: #1d4ed8; /* blue-700 */
-  --color-quantity-button-hover-bg: #bfdbfe; /* blue-200 */
-  --color-record-cost-text: #1f2937; /* gray-800 */
-  --color-total-text: #1d4ed8; /* blue-700 */
-  --color-net-total-text: #16a34a; /* green-700 */
-  --color-hr-border: #d1d5db; /* gray-300 */
-  --color-manage-btn-bg: #ffffff;
-  --color-manage-btn-text: #1e40af;
-  --color-manage-btn-hover-bg: #e0f2fe;
-  --color-record-row-hover: #e5e7eb;
-
-  /* Scrollbar for Light Theme */
   --scrollbar-track-bg: #e2e8f0;
   --scrollbar-thumb-bg: #94a3b8;
   --scrollbar-thumb-hover-bg: #64748b;
 }
 
-html[data-theme="dark"] {
-  /* Dark Theme Overrides */
-  --color-bg-primary: #111827; /* gray-900 */
-  --color-text-primary: #f3f4f6; /* gray-100 */
-  --color-card-bg: #1f2937; /* gray-800 */
-  --color-card-border: #374151; /* gray-700 */
-  --color-header-bg-start: #4338ca; /* indigo-800 */
-  --color-header-bg-end: #5a32a3; /* purple-900 */
-  --color-sidebar-bg: #1f2937;
-  --color-sidebar-border: #374151;
-  --color-input-bg: #374151; /* gray-700 */
-  --color-input-border: #4b5563; /* gray-600 */
-  --color-label-text: #d1d5db; /* gray-300 */
-  --color-table-header-bg: #374151; /* gray-700 */
-  --color-table-header-text: #d1d5db; /* gray-300 */
-  --color-table-row-text: #e5e7eb; /* gray-200 */
-  --color-table-row-border: #374151;
-  --color-product-list-bg: #374151; /* gray-700 */
-  --color-product-list-border: #4b5563; /* gray-600 */
-  --color-product-name-text: #f3f4f6; /* gray-100 */
-  --color-product-price-text: #d1d5db; /* gray-300 */
-  --color-remove-button-bg: #dc2626; /* red-600 */
-  --color-remove-button-hover-bg: #b91c1c; /* red-700 */
-  --color-quantity-button-bg: #6b21a8; /* purple-600 */
-  --color-quantity-button-text: #ffffff;
-  --color-quantity-button-hover-bg: #7e22ce; /* purple-700 */
-  --color-record-cost-text: #2dd4bf; /* teal-400 */
-  --color-total-text: #2dd4bf; /* teal-400 */
-  --color-net-total-text: #4ade80; /* green-400 */
-  --color-hr-border: #4b5563; /* gray-600 */
-  --color-manage-btn-bg: #2dd4bf; /* teal-400 */
-  --color-manage-btn-text: #1f2937;
-  --color-manage-btn-hover-bg: #20c2b2;
-  --color-record-row-hover: #111827; /* gray-900 */
+/* Prevent sidebar flickering on page load */
+#manageInventorySideBar {
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
 
-  /* Scrollbar for Dark Theme */
-  --scrollbar-track-bg: #2d3748;
-  --scrollbar-thumb-bg: #4a5568;
-  --scrollbar-thumb-hover-bg: #5a667b;
+/* Ensure sidebar is hidden by default */
+#manageInventorySideBar.translate-x-full {
+  transform: translateX(100%);
+}
+
+/* Show sidebar when translate-x-full class is removed */
+#manageInventorySideBar:not(.translate-x-full) {
+  transform: translateX(0);
 }
 
 body {
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Smooth transitions for dark mode */
-* {
-  transition: background-color 0.3s ease, border-color 0.3s ease,
-    color 0.3s ease;
+  background-color: #f3f4f6; /* gray-100 */
+  color: #111827; /* gray-900 */
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -139,18 +75,26 @@ body {
   background: var(--scrollbar-thumb-hover-bg);
 }
 
-/* Mobile responsive header styles */
-@media (max-width: 640px) {
-  /* Ensure the mobile icon is properly centered and sized */
-  .mobile-header-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 40px;
-    min-height: 40px;
-  }
+/* Prevent header elements from flickering on page load */
 
-  /* Adjust header padding for mobile */
+/* Mobile icon - show on all screens */
+.mobile-header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+/* Company name styling */
+h1.text-2xl {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+}
+
+/* Adjust header padding for mobile */
+@media (max-width: 640px) {
   header {
     padding: 0.75rem 1rem;
   }
@@ -202,18 +146,11 @@ body {
   .bg-gray-100 {
     background-color: #f7fafc !important; /* Light background for print table header */
   }
-  /* Ensure dark mode styles don't bleed into print */
+  /* Ensure consistent styling for print */
   html {
-    /* Reset theme for print */
     background-color: #fff !important;
     color: #000 !important;
   }
-  html[data-theme="dark"] {
-    /* Explicitly override dark mode for print */
-    background-color: #fff !important;
-    color: #000 !important;
-  }
-  /* Note: We no longer have .dark\: classes directly, using CSS variables and data-theme */
 }
 
 /* Custom styles for print, if needed */
@@ -258,16 +195,9 @@ body {
   .bg-gray-100 {
     background-color: #f7fafc !important; /* Light background for print table header */
   }
-  /* Ensure dark mode styles don't bleed into print */
+  /* Ensure consistent styling for print */
   html {
-    /* Reset theme for print */
     background-color: #fff !important;
     color: #000 !important;
   }
-  html[data-theme="dark"] {
-    /* Explicitly override dark mode for print */
-    background-color: #fff !important;
-    color: #000 !important;
-  }
-  /* Note: We no longer have .dark\: classes directly, using CSS variables and data-theme */
 }

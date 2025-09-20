@@ -5,12 +5,12 @@ export const manageInventorySideBar = document.querySelector(
 export const openManageInventoryBtn = document.querySelector(
   "#openManageInventoryBtn"
 );
-export const closeMangeInventoryBtn = document.querySelector(
-  "#closeMangeInventoryBtn"
+export const closeManageInventoryBtn = document.querySelector(
+  "#closeManageInventoryBtn"
 );
-export const newProductName = document.querySelector("#newProductName");
-export const newProductPrice = document.querySelector("#newProductPrice");
-export const newProductBtn = document.querySelector("#newProductBtn");
+export const newProductName = document.querySelector("#new商品Name");
+export const newProductPrice = document.querySelector("#new商品Price");
+export const newProductBtn = document.querySelector("#new商品Btn");
 export const productGroup = document.querySelector("#productGroup");
 export const productListTemplate = document.querySelector(
   "#productListTemplate"
@@ -23,9 +23,3 @@ export const recordTax = document.querySelector("#recordTax");
 export const recordNetTotal = document.querySelector("#recordNetTotal");
 export const recordGroup = document.querySelector("#recordGroup");
 export const checkOutBtn = document.querySelector("#checkOutBtn");
-export const themeToggleButton = document.querySelector("#themeToggleButton");
-export const sunIcon = document.querySelector("#sunIcon");
-export const moonIcon = document.querySelector("#moonIcon");
-export const languageToggleButton = document.querySelector(
-  "#languageToggleButton"
-);

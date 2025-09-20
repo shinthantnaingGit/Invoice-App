@@ -9,7 +9,6 @@ import {
 } from "./selectors";
 import { v4 as uuidv4 } from "uuid";
 import { products } from "./state";
-import { translations } from "./translations.js";
 
 //ADD NEW PRODUCT BTN
 export const newProductBtnHandler = () => {
@@ -30,20 +29,16 @@ export const newProductBtnHandler = () => {
         newProductPrice.valueAsNumber
       )
     );
-    const currentLanguage =
-      window.languageHandler?.getCurrentLanguage() || "ja";
-    const displayName =
-      currentLanguage === "ja" ? newProductName.value : newProductName.value;
     productSelect.append(
-      new Option(`${displayName} - ${newProductPrice.valueAsNumber}`, createId)
+      new Option(
+        `${newProductName.value} - ${newProductPrice.valueAsNumber}`,
+        createId
+      )
     );
     newProductName.value = "";
     newProductPrice.value = "";
   } else {
-    const currentLanguage =
-      window.languageHandler?.getCurrentLanguage() || "ja";
-    const currentTranslations = translations[currentLanguage];
-    Swal.fire(currentTranslations.noProductNameOrPrice);
+    Swal.fire("商品名または価格が入力されていません");
   }
 };
 //CREATE NEW PRODUCT LIST
@@ -75,20 +70,18 @@ export const productGroupHandler = (event) => {
 //DELETE PRODUCT LIST
 export const deleteProductList = (listId) => {
   // console.log("You Deleted");
-  const currentLanguage = window.languageHandler?.getCurrentLanguage() || "ja";
-  const currentTranslations = translations[currentLanguage];
 
   Swal.fire({
-    title: currentTranslations.areYouSureToRemove,
-    text: currentTranslations.youWontBeAbleToRevert,
+    title: "削除してもよろしいですか？",
+    text: "この操作は元に戻せません！",
     icon: "question",
     showCancelButton: true,
-    confirmButtonText: currentTranslations.yesDeleteIt,
+    confirmButtonText: "はい、削除します！",
   }).then((result) => {
     if (result.isConfirmed) {
       Swal.fire({
-        title: currentTranslations.deleted,
-        text: currentTranslations.yourFileHasBeenDeleted,
+        title: "削除されました！",
+        text: "ファイルが削除されました。",
         icon: "success",
       });
       const currentProductList = productGroup.querySelector(`#${listId}`);
@@ -118,12 +111,9 @@ export const deleteProductList = (listId) => {
 };
 //RENDER PRODUCTS
 export const productRender = (products) => {
-  const currentLanguage = window.languageHandler?.getCurrentLanguage() || "ja";
-
-  products.forEach(({ id, name, nameJa, price }) => {
-    const displayName = currentLanguage === "ja" ? nameJa || name : name;
-    productGroup.append(createNewProductList(id, displayName, price));
-    productSelect.append(new Option(`${displayName} - ${price}`, id));
+  products.forEach(({ id, name, price }) => {
+    productGroup.append(createNewProductList(id, name, price));
+    productSelect.append(new Option(`${name} - ${price}`, id));
   });
 };
 // ENTER KEY FOR PRODUCT NAME INPUT

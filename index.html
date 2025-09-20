@@ -4,28 +4,6 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./public/money.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script>
-      // Initialize theme before page load to prevent flash
-      if (
-        localStorage.getItem("color-theme") === "dark" ||
-        (!("color-theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.setAttribute("data-theme", "dark");
-      } else {
-        document.documentElement.setAttribute("data-theme", "light");
-      }
-
-      // Initialize language before page load to prevent flash
-      const savedLanguage = localStorage.getItem("app-language");
-      if (savedLanguage && (savedLanguage === "en" || savedLanguage === "ja")) {
-        document.documentElement.setAttribute("lang", savedLanguage);
-      } else {
-        // Default to Japanese
-        document.documentElement.setAttribute("lang", "ja");
-        localStorage.setItem("app-language", "ja");
-      }
-    </script>
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="Invoice App" />
     <meta
@@ -55,10 +33,11 @@
     <title>Invoice App</title>
   </head>
   <body
-    class="font-family-inter antialiased"
+    class="antialiased"
     style="
-      background-color: var(--color-bg-primary);
-      color: var(--color-text-primary);
+      font-family: 'Inter', sans-serif;
+      background-color: #f3f4f6;
+      color: #111827;
     "
   >
     <div id="app" class="min-h-screen flex flex-col relative">
@@ -66,111 +45,43 @@
       <header
         class="relative z-20 p-4 shadow-lg flex justify-between items-center rounded-b-xl"
         style="
-          background: linear-gradient(
-            to right,
-            var(--color-header-bg-start),
-            var(--color-header-bg-end)
-          );
-          color: var(--color-text-primary);
+          background: linear-gradient(to right, #1d4ed8, #1e40af);
+          color: #111827;
         "
       >
-        <!-- Company name - hidden on mobile, visible on larger screens -->
-        <h1
-          class="text-3xl font-extrabold tracking-wide hidden sm:block"
-          data-translate="companyName"
-        >
-          未来ITソリューションズ
-        </h1>
-
-        <!-- Invoice icon - visible on mobile, hidden on larger screens -->
-        <div class="flex items-center sm:hidden mobile-header-icon">
-          <svg
-            class="w-8 h-8 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-            ></path>
-          </svg>
+        <!-- Invoice icon and company name -->
+        <div class="flex items-center space-x-3">
+          <div class="flex items-center mobile-header-icon">
+            <svg
+              class="w-8 h-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              ></path>
+            </svg>
+          </div>
+          <!-- Company name - visible on desktop, hidden on mobile -->
+          <h1 class="text-2xl font-bold text-white hidden sm:block">
+            請求書管理システム
+          </h1>
         </div>
         <div class="flex items-center space-x-4">
-          <button
-            id="languageToggleButton"
-            class="p-2.5 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 transition-colors duration-200 mr-2 flex items-center justify-center w-12 h-12"
-            title="Toggle Language"
-          >
-            <svg
-              class="language-icon w-6 h-6 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
-              ></path>
-            </svg>
-          </button>
-          <button
-            id="themeToggleButton"
-            class="p-2.5 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-75 transition-colors duration-200"
-          >
-            <!-- Sun Icon for Light Mode -->
-            <svg
-              id="sunIcon"
-              class="w-6 h-6 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 3v1m0 16v1m9-9h1M2 12h1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-              ></path>
-            </svg>
-            <!-- Moon Icon for Dark Mode - Initially hidden, shown when data-theme="dark" is applied by JS -->
-            <svg
-              id="moonIcon"
-              class="w-6 h-6 text-white hidden"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-              ></path>
-            </svg>
-          </button>
           <button
             id="openManageInventoryBtn"
             class="px-6 py-2.5 rounded-full font-bold shadow-md transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-opacity-75 w-40"
             style="
-              background-color: var(--color-manage-btn-bg);
-              color: var(--color-manage-btn-text);
-              border-color: var(
-                --color-manage-btn-bg
-              ); /* Use for ring color if needed */
-              --tw-ring-color: var(
-                --color-manage-btn-bg
-              ); /* Explicitly set ring color */
+              background-color: #ffffff;
+              color: #1e40af;
+              border-color: #ffffff; /* Use for ring color if needed */
+              --tw-ring-color: #ffffff; /* Explicitly set ring color */
             "
-            data-translate="manageInventory"
           >
             在庫管理
           </button>
@@ -187,16 +98,9 @@
           <div
             id="invoiceItemCreationg"
             class="p-8 rounded-2xl shadow-lg border"
-            style="
-              background-color: var(--color-card-bg);
-              border-color: var(--color-card-border);
-            "
+            style="background-color: #ffffff; border-color: #e5e7eb"
           >
-            <h2
-              class="text-2xl font-bold mb-6"
-              style="color: var(--color-text-primary)"
-              data-translate="addItemToInvoice"
-            >
+            <h2 class="text-2xl font-bold mb-6" style="color: #111827">
               請求書にアイテムを追加
             </h2>
             <form id="createRecordForm" class="space-y-6">
@@ -204,8 +108,7 @@
                 <label
                   for="productSelect"
                   class="block text-sm font-medium mb-2"
-                  style="color: var(--color-label-text)"
-                  data-translate="selectProduct"
+                  style="color: #374151"
                   >商品を選択</label
                 >
                 <select
@@ -213,25 +116,22 @@
                   name="product_select"
                   class="w-full p-3 rounded-lg focus:ring-2 transition-all duration-200"
                   style="
-                    background-color: var(--color-input-bg);
-                    border: 1px solid var(--color-input-border);
-                    color: var(--color-text-primary);
+                    background-color: #ffffff;
+                    border: 1px solid #d1d5db;
+                    color: #111827;
                     --tw-ring-color: var(--color-manage-btn-bg);
                   "
                   required
                 >
-                  <option value="" data-translate="chooseProduct">
-                    -- 商品を選択してください --
-                  </option>
-                  <!-- Product options will be dynamically added here by JavaScript -->
+                  <option value="">-- 商品を選択してください --</option>
+                  <!-- 商品 options will be dynamically added here by JavaScript -->
                 </select>
               </div>
               <div>
                 <label
                   for="quantity"
                   class="block text-sm font-medium mb-2"
-                  style="color: var(--color-label-text)"
-                  data-translate="quantity"
+                  style="color: #374151"
                   >数量</label
                 >
                 <input
@@ -242,9 +142,9 @@
                   value="1"
                   class="w-full p-3 rounded-lg focus:ring-2 transition-all duration-200"
                   style="
-                    background-color: var(--color-input-bg);
-                    border: 1px solid var(--color-input-border);
-                    color: var(--color-text-primary);
+                    background-color: #ffffff;
+                    border: 1px solid #d1d5db;
+                    color: #111827;
                     --tw-ring-color: var(--color-manage-btn-bg);
                   "
                 />
@@ -253,59 +153,44 @@
                 type="submit"
                 class="w-full p-3 rounded-lg font-semibold shadow-md transform hover:scale-105 transition-colors duration-200"
                 style="
-                  background-color: var(--color-header-bg-start);
+                  background-color: #1d4ed8;
                   color: #ffffff; /* Always white text for these buttons */
                   border-color: var(
                     --color-header-bg-start
                   ); /* Use for ring color if needed */
-                  --tw-ring-color: var(--color-header-bg-start);
+                  --tw-ring-color: #1d4ed8;
                 "
-                data-translate="addToInvoice"
               >
                 請求書に追加
               </button>
             </form>
           </div>
 
-          <!-- Invoice Items Table -->
+          <!-- 請求書アイテム Table -->
           <div
             class="p-8 rounded-2xl shadow-lg border overflow-x-auto"
-            style="
-              background-color: var(--color-card-bg);
-              border-color: var(--color-card-border);
-            "
+            style="background-color: #ffffff; border-color: #e5e7eb"
           >
-            <h2
-              class="text-2xl font-bold mb-6"
-              style="color: var(--color-text-primary)"
-              data-translate="invoiceItems"
-            >
+            <h2 class="text-2xl font-bold mb-6" style="color: #111827">
               請求書アイテム
             </h2>
             <table class="min-w-full table-auto border-collapse">
               <thead>
                 <tr
                   class="text-left uppercase text-sm leading-normal"
-                  style="
-                    background-color: var(--color-table-header-bg);
-                    color: var(--color-table-header-text);
-                  "
+                  style="background-color: #f3f4f6; color: #4b5563"
                 >
-                  <th class="py-3 px-6" data-translate="product">商品</th>
-                  <th class="py-3 px-6" data-translate="price">価格 (¥)</th>
-                  <th class="py-3 px-6" data-translate="qty">数量</th>
-                  <th class="py-3 px-6 text-right" data-translate="cost">
-                    費用 (¥)
-                  </th>
-                  <th class="py-3 px-6 print:hidden" data-translate="actions">
-                    アクション
-                  </th>
+                  <th class="py-3 px-6">商品</th>
+                  <th class="py-3 px-6">価格 (¥)</th>
+                  <th class="py-3 px-6">数量</th>
+                  <th class="py-3 px-6 text-right">費用 (¥)</th>
+                  <th class="py-3 px-6 print:hidden">アクション</th>
                 </tr>
               </thead>
               <tbody
                 id="recordGroup"
                 class="text-sm font-light"
-                style="color: var(--color-table-row-text)"
+                style="color: #374151"
               >
                 <!-- Invoice records will be dynamically added here by JavaScript -->
               </tbody>
@@ -313,77 +198,58 @@
           </div>
         </section>
 
-        <!-- Summary and Actions Section -->
+        <!-- Summary and アクション Section -->
         <aside class="lg:col-span-1 flex flex-col gap-8">
           <!-- Summary Card -->
           <div
             class="p-8 rounded-2xl shadow-lg border"
-            style="
-              background-color: var(--color-card-bg);
-              border-color: var(--color-card-border);
-            "
+            style="background-color: #ffffff; border-color: #e5e7eb"
           >
-            <h2
-              class="text-2xl font-bold mb-6"
-              style="color: var(--color-text-primary)"
-              data-translate="invoiceSummary"
-            >
+            <h2 class="text-2xl font-bold mb-6" style="color: #111827">
               請求書サマリー
             </h2>
             <div class="space-y-4">
               <div
                 class="flex justify-between items-center text-lg font-medium"
-                style="color: var(--color-label-text)"
+                style="color: #374151"
               >
-                <span data-translate="total">合計:</span>
+                <span>合計:</span>
                 <div>
                   <span
                     id="recordTotal"
                     class="font-bold text-xl"
-                    style="color: var(--color-total-text)"
+                    style="color: #1d4ed8"
                     >0</span
-                  ><span
-                    class="font-bold text-xl"
-                    style="color: var(--color-total-text)"
-                  >
+                  ><span class="font-bold text-xl" style="color: #1d4ed8">
                     ¥</span
                   >
                 </div>
               </div>
               <div
                 class="flex justify-between items-center text-lg font-medium"
-                style="color: var(--color-label-text)"
+                style="color: #374151"
               >
-                <span data-translate="tax">税金 (5%):</span>
+                <span>税金 (5%):</span>
                 <div>
                   <span
                     id="recordTax"
                     class="font-bold text-xl"
-                    style="color: var(--color-total-text)"
+                    style="color: #1d4ed8"
                     >0</span
-                  ><span
-                    class="font-bold text-xl"
-                    style="color: var(--color-total-text)"
-                  >
+                  ><span class="font-bold text-xl" style="color: #1d4ed8">
                     ¥</span
                   >
                 </div>
               </div>
-              <hr
-                class="my-4"
-                style="border-top: 1px solid var(--color-hr-border)"
-              />
+              <hr class="my-4" style="border-top: 1px solid #d1d5db" />
               <div
                 class="flex justify-between items-center text-xl font-extrabold"
-                style="color: var(--color-net-total-text)"
+                style="color: #16a34a"
               >
-                <span data-translate="netTotal">純合計:</span>
+                <span>純合計:</span>
                 <div>
                   <span id="recordNetTotal" class="text-2xl">0</span>
-                  <span
-                    class="font-bold text-xl"
-                    style="color: var(--color-net-total-text)"
-                  >
+                  <span class="font-bold text-xl" style="color: #16a34a">
                     ¥</span
                   >
                 </div>
@@ -395,10 +261,7 @@
           <button
             id="checkOutBtn"
             class="w-full p-4 rounded-xl font-bold text-xl shadow-lg hover:bg-green-700 transition-colors duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
-            style="
-              background-color: var(--color-net-total-text);
-              color: #ffffff;
-            "
+            style="background-color: #16a34a; color: #ffffff"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -414,117 +277,94 @@
                 d="M3 10v11l6-3 6 3 6-3V10m-12 8a2 2 0 11-4 0 2 2 0 014 0zM17 8a2 2 0 11-4 0 2 2 0 014 0z"
               />
             </svg>
-            <span data-translate="printInvoice">請求書を印刷</span>
+            <span>請求書を印刷</span>
           </button>
         </aside>
       </main>
 
-      <!-- Manage Inventory Sidebar -->
+      <!-- 在庫管理 Sidebar -->
       <aside
         id="manageInventorySideBar"
         class="fixed top-0 right-0 h-full w-[350px] sm:w-[500px] shadow-2xl transform translate-x-full transition-transform ease-in-out duration-300 p-6 z-50 rounded-l-xl border-l overflow-y-auto custom-scrollbar"
-        style="
-          background-color: var(--color-sidebar-bg);
-          border-color: var(--color-sidebar-border);
-        "
+        style="background-color: #ffffff; border-color: #e5e7eb"
       >
         <div class="flex justify-between items-center mb-6">
-          <h2
-            class="text-2xl font-bold"
-            style="color: var(--color-text-primary)"
-            data-translate="manageInventory"
-          >
-            在庫管理
-          </h2>
+          <h2 class="text-2xl font-bold" style="color: #111827">在庫管理</h2>
           <button
-            id="closeMangeInventoryBtn"
+            id="closeManageInventoryBtn"
             class="focus:outline-none text-2xl font-bold"
-            style="color: var(--color-label-text)"
+            style="color: #374151"
           >
             &times;
           </button>
         </div>
 
-        <!-- Existing Product List -->
+        <!-- Existing 商品 List -->
         <div class="mb-8">
-          <h3
-            class="text-xl font-semibold mb-4"
-            style="color: var(--color-label-text)"
-            data-translate="existingProducts"
-          >
+          <h3 class="text-xl font-semibold mb-4" style="color: #374151">
             既存商品
           </h3>
           <div
             id="productGroup"
             class="space-y-3 pr-2 custom-scrollbar max-h-96 overflow-y-auto"
           >
-            <!-- Products will be dynamically loaded here -->
+            <!-- 商品s will be dynamically loaded here -->
           </div>
         </div>
 
-        <!-- Add New Product Form -->
+        <!-- Add New 商品 Form -->
         <div>
-          <h3
-            class="text-xl font-semibold mb-4"
-            style="color: var(--color-label-text)"
-            data-translate="addNewProduct"
-          >
+          <h3 class="text-xl font-semibold mb-4" style="color: #374151">
             新商品を追加
           </h3>
           <div class="space-y-4">
             <div>
               <label
-                for="newProductName"
+                for="new商品Name"
                 class="block text-sm font-medium mb-2"
-                style="color: var(--color-label-text)"
-                data-translate="productName"
+                style="color: #374151"
                 >商品名</label
               >
               <input
                 type="text"
-                id="newProductName"
+                id="new商品Name"
                 data-translate-placeholder="productNamePlaceholder"
                 placeholder="例: UI/UXデザイン"
                 class="w-full p-3 rounded-lg focus:ring-2 transition-all duration-200"
                 style="
-                  background-color: var(--color-input-bg);
-                  border: 1px solid var(--color-input-border);
-                  color: var(--color-text-primary);
+                  background-color: #ffffff;
+                  border: 1px solid #d1d5db;
+                  color: #111827;
                   --tw-ring-color: var(--color-manage-btn-bg);
                 "
               />
             </div>
             <div>
               <label
-                for="newProductPrice"
+                for="new商品Price"
                 class="block text-sm font-medium mb-2"
-                style="color: var(--color-label-text)"
-                data-translate="price"
+                style="color: #374151"
                 >価格 (¥)</label
               >
               <input
                 type="number"
-                id="newProductPrice"
+                id="new商品Price"
                 min="0"
                 data-translate-placeholder="pricePlaceholder"
                 placeholder="例: 250000"
                 class="w-full p-3 rounded-lg focus:ring-2 transition-all duration-200"
                 style="
-                  background-color: var(--color-input-bg);
-                  border: 1px solid var(--color-input-border);
-                  color: var(--color-text-primary);
+                  background-color: #ffffff;
+                  border: 1px solid #d1d5db;
+                  color: #111827;
                   --tw-ring-color: var(--color-manage-btn-bg);
                 "
               />
             </div>
             <button
-              id="newProductBtn"
+              id="new商品Btn"
               class="w-full p-3 rounded-lg font-semibold shadow-md transform hover:scale-105 transition-colors duration-200"
-              style="
-                background-color: var(--color-header-bg-start);
-                color: #ffffff;
-              "
-              data-translate="addProduct"
+              style="background-color: #1d4ed8; color: #ffffff"
             >
               商品を追加
             </button>
@@ -536,29 +376,23 @@
       <template id="productListTemplate">
         <div
           class="product-list flex justify-between items-center p-3 rounded-md shadow-sm border animate__animated animate__fadeIn"
-          style="
-            background-color: var(--color-product-list-bg);
-            border-color: var(--color-product-list-border);
-          "
+          style="background-color: #f9fafb; border-color: #e5e7eb"
         >
           <div class="flex-1">
             <span
               class="product-name font-medium"
-              style="color: var(--color-product-name-text)"
+              style="color: #1f2937"
             ></span>
             -
-            <span
-              class="product-price"
-              style="color: var(--color-product-price-text)"
-            ></span>
+            <span class="product-price" style="color: #4b5563"></span>
             ¥
           </div>
           <button
             class="product-remove w-7 h-7 flex items-center justify-center rounded-full text-sm font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-75"
             style="
-              background-color: var(--color-remove-button-bg);
+              background-color: #ef4444;
               color: #ffffff;
-              --tw-ring-color: var(--color-remove-button-bg);
+              --tw-ring-color: #ef4444;
             "
           >
             &times;
@@ -568,43 +402,40 @@
 
       <template id="recordRowTemplate">
         <tr
-          class="record-row hover:bg-[var(--color-record-row-hover)] border-b transition-colors duration-150 animate__animated animate__fadeIn"
-          style="border-color: var(--color-table-row-border)"
+          class="record-row hover:bg-[#e5e7eb] border-b transition-colors duration-150 animate__animated animate__fadeIn"
+          style="border-color: #e5e7eb"
         >
           <td class="py-3 px-6 text-left whitespace-nowrap">
             <div
               class="record-product-name font-medium"
-              style="color: var(--color-product-name-text)"
+              style="color: #1f2937"
             ></div>
           </td>
           <td class="py-3 px-6 text-left">
-            <div
-              class="record-product-price"
-              style="color: var(--color-product-price-text)"
-            ></div>
+            <div class="record-product-price" style="color: #4b5563"></div>
           </td>
           <td class="py-3 px-6 text-left">
             <div class="flex items-center">
               <button
                 class="quantity-sub w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold focus:outline-none focus:ring-2 focus:ring-opacity-75 print:hidden"
                 style="
-                  background-color: var(--color-quantity-button-bg);
-                  color: var(--color-quantity-button-text);
-                  --tw-ring-color: var(--color-quantity-button-bg);
+                  background-color: #dbeafe;
+                  color: #1d4ed8;
+                  --tw-ring-color: #dbeafe;
                 "
               >
                 -
               </button>
               <span
                 class="record-quantity mx-2 font-medium"
-                style="color: var(--color-product-name-text)"
+                style="color: #1f2937"
               ></span>
               <button
                 class="quantity-add w-6 h-6 flex items-center justify-center rounded-full text-xs font-bold focus:outline-none focus:ring-2 focus:ring-opacity-75 print:hidden"
                 style="
-                  background-color: var(--color-quantity-button-bg);
-                  color: var(--color-quantity-button-text);
-                  --tw-ring-color: var(--color-quantity-button-bg);
+                  background-color: #dbeafe;
+                  color: #1d4ed8;
+                  --tw-ring-color: #dbeafe;
                 "
               >
                 +
@@ -612,18 +443,15 @@
             </div>
           </td>
           <td class="py-3 px-6 text-right">
-            <div
-              class="record-cost font-semibold"
-              style="color: var(--color-record-cost-text)"
-            ></div>
+            <div class="record-cost font-semibold" style="color: #1f2937"></div>
           </td>
           <td class="py-3 px-6 text-center">
             <button
               class="remove-record w-7 h-7 flex items-center justify-center rounded-full text-sm font-bold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-75 print:hidden"
               style="
-                background-color: var(--color-remove-button-bg);
+                background-color: #ef4444;
                 color: #ffffff;
-                --tw-ring-color: var(--color-remove-button-bg);
+                --tw-ring-color: #ef4444;
               "
             >
               &times;

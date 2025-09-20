@@ -13,6 +13,7 @@ import {
 import { createRecordFormHandler, recordGroupHandler } from "./record";
 import {
   checkOutBtn,
+  closeManageInventoryBtn,
   createRecordForm,
   newProductBtn,
   newProductName,
@@ -22,8 +23,14 @@ import {
 } from "./selectors";
 
 const listener = () => {
-  openManageInventoryBtn.addEventListener("click", openManageInventoryBtnHandler);
-  closeMangeInventoryBtn.addEventListener("click", closeManageInventoryBtnHandler);
+  openManageInventoryBtn.addEventListener(
+    "click",
+    openManageInventoryBtnHandler
+  );
+  closeManageInventoryBtn.addEventListener(
+    "click",
+    closeManageInventoryBtnHandler
+  );
   newProductBtn.addEventListener("click", newProductBtnHandler);
   newProductName.addEventListener("keyup", productNameInputEnterKeyHandler);
   newProductPrice.addEventListener("keyup", priceInputEnterKeyHandler);

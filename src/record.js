@@ -9,7 +9,6 @@ import {
 } from "./selectors";
 import { products } from "./state";
 import { v4 as uuidv4 } from "uuid";
-import { translations } from "./translations.js";
 //CREATE RECORD FORM HANDLER
 export const createRecordFormHandler = (event) => {
   event.preventDefault();
@@ -28,18 +27,14 @@ export const createRecordFormHandler = (event) => {
   if (existedRecord == null) {
     recordGroup.append(createNewRecordRow(product, formData.get("quantity")));
   } else {
-    const currentLanguage =
-      window.languageHandler?.getCurrentLanguage() || "ja";
-    const currentTranslations = translations[currentLanguage];
-    const displayName =
-      currentLanguage === "ja" ? product.nameJa || product.name : product.name;
+    const displayName = product.name;
 
     Swal.fire({
-      title: `${displayName} ${currentTranslations.productAlreadyExists}`,
-      text: currentTranslations.youWontBeAbleToRevert,
+      title: `${displayName} は既に存在します。数量をアップグレードしますか？`,
+      text: "この操作は元に戻せません！",
       icon: "question",
       showCancelButton: true,
-      confirmButtonText: currentTranslations.yesUpgradeQuantity,
+      confirmButtonText: "はい、数量をアップグレード！",
     }).then((result) => {
       if (result.isConfirmed) {
         // console.log(product.id);
@@ -72,15 +67,11 @@ export const createNewRecordRow = ({ id, name, nameJa, price }, quantity) => {
   const recordQuantity = currentRecordRow.querySelector(".record-quantity");
   const recordCost = currentRecordRow.querySelector(".record-cost");
 
-  // Get current language and display appropriate name
-  const currentLanguage = window.languageHandler?.getCurrentLanguage() || "ja";
-  const displayName = currentLanguage === "ja" ? nameJa || name : name;
-
   // currentRecordRow.setAttribute("product-id", id);
   currentRecordRow.id = "row" + id;
   // console.log("row Id",currentRecordRow.id);
   // currentRecordRow.id = "row" + uuidv4();
-  recordProductName.innerText = displayName;
+  recordProductName.innerText = name;
   recordProductPrice.innerText = price;
   recordQuantity.innerText = quantity;
   recordCost.innerText = price * quantity;
@@ -109,15 +100,12 @@ export const recordGroupHandler = (event) => {
 };
 //REMOVE RECORD ROW
 export const removeRecordRow = (rowId) => {
-  const currentLanguage = window.languageHandler?.getCurrentLanguage() || "ja";
-  const currentTranslations = translations[currentLanguage];
-
   Swal.fire({
-    title: currentTranslations.areYouSureToRemove,
-    text: currentTranslations.youWontBeAbleToRevert,
+    title: "削除してもよろしいですか？",
+    text: "この操作は元に戻せません！",
     icon: "question",
     showCancelButton: true,
-    confirmButtonText: currentTranslations.yesDeleteIt,
+    confirmButtonText: "はい、削除します！",
   }).then((result) => {
     if (result.isConfirmed) {
       const currentRecordRow = recordGroup.querySelector(`#${rowId}`);
@@ -127,8 +115,8 @@ export const removeRecordRow = (rowId) => {
       });
 
       Swal.fire({
-        title: currentTranslations.deleted,
-        text: currentTranslations.yourFileHasBeenDeleted,
+        title: "削除されました！",
+        text: "ファイルが削除されました。",
         icon: "success",
       });
     }
